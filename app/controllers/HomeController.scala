@@ -11,7 +11,7 @@ import play.api.mvc._
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   val gameController = Stratego.controller
-  val matchfieldString = gameController.matchFieldToString()
+  val matchfieldString = gameController.matchFieldToString
 
   def about() = Action {
     Ok(views.html.index())
