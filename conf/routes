@@ -4,11 +4,23 @@
 
 # Controller for Stratego
 
-GET     /                           controllers.HomeController.stratego
-
-GET     /about                      controllers.HomeController.about
+GET     /                           controllers.HomeController.index
 
 GET     /stratego                   controllers.HomeController.stratego
+
+GET     /newGame                    controllers.HomeController.newGame
+
+GET     /load                       controllers.HomeController.load
+
+GET     /save                       controllers.HomeController.save
+
+GET     /undo                       controllers.HomeController.undo
+
+GET     /redo                       controllers.HomeController.redo
+
+GET     /quit                       controllers.HomeController.quit
+
+GET     /handle/:input              controllers.HomeController.handle(input: String)
 
 
 # Map static resources from the /public folder to the /assets URL path
