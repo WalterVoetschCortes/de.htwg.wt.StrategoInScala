@@ -73,8 +73,6 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def attack(rowA: String, colA: String, rowD: String, colD: String) = Action {
-    Stratego.tui.processInputLine("a " + rowA + colA + rowD + colD)
-    Ok(matchFieldText)
-
+    Ok(Stratego.tui.processInputLine("a " + rowA + colA + rowD + colD) + "\n" + matchFieldText)
   }
 }
