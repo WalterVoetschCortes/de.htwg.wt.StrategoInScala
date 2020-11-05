@@ -2,43 +2,128 @@
 
 @main("Stratego") {
 
-    <img src="media/stratego.jpg" alt="Logo" />
-    <h1>Welcome to Stratego</h1>
-    <p>A little info about the game STRATEGO. This game is part of our project for our class Web Technologies at the
-        University of Applied Science HTWG Konstanz and is a continuation of the project in software engineering.
-    </p>
-    <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank">Take a look at the github repository</a>
-    <h2>Gameplay</h2>
-    <p>
-        Stratego is a strategy board game for two players. Each player has 40 pieces representing different characters.
-        <br><br>
-        We modified the game a little bit so you can walk with all characters (except flag and bomb) just one field up, down, to the right or to the left. You also can attack the oppenents with your figures. To win the game you have to find and attack the flag of your enemy.
-        <br><br>
-        The figures are ranked from highest to lowest as follows:
-    </p>
-    <ul type="circle">
-        <li>Bomb (&#x1F4A3;)</li>
-        <li>Marshal (&#x1F482;)</li>
-        <li>General (9)</li>
-        <li>Colonel (8)</li>
-        <li>Major (7)</li>
-        <li>Captain (6)</li>
-        <li>Lieutenant (5)</li>
-        <li>Sergeant (4)</li>
-        <li>Miner (3)</li>
-        <li>Scout (2)</li>
-        <li>Spy (1)</li>
-        <li>Flag (&#x1F3F3;)</li>
-    </ul>
-    <p>
-        Important rules:
-    </p>
-    <ul type="circle">
-        <li>Flag is the most important figure</li>
-        <li>Miner and Bomb: only the miner can defuse the Bomb</li>
-        <li>Every other figure loses against the Bomb</li>
-        <li>Spy and Marshal: only Spy can beat the Marshal except the bomb</li>
-        <li>Flag and Bomb can?t be moved</li>
-    </ul>
+    <!-- ===== HEADER ===== -->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="#" class="nav__logo">Stratego</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="#gameplay" class="nav__link">Gameplay</a></li>
+                    <li class="nav__item"><a href="#play" class="nav__link">Play</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class ="l-main">
+
+            <!-- ===== HOME ===== -->
+        <section class="home bd-grid" id="home">
+
+                <div class="home__img">
+                    <img src="@routes.Assets.versioned("images/stratego.jpg")" alt="StrategoLogo">
+                </div>
+
+                <div class="home__social">
+                    <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="home__social-icon"><i class="fab fa-github"></i>Desktop-App</a>
+                    <a href="https://github.com/WalterVoetschCortes/de.htwg.wt.StrategoInScala" target="_blank" class="home__social-icon"><i class="fab fa-github"></i>Web-App</a>
+                </div>
+
+        </section>
+
+            <!-- ===== ABOUT ===== -->
+        <section class="about section" id="about">
+            <h2 class="section-title">About</h2>
+
+            <div class="about__container bd-grid">
+                <div class="about__img">
+                    <img src="@routes.Assets.versioned("images/cover.jpg")" alt="StrategoCover">
+                </div>
+
+                <div>
+                    <h2 class="about__subtitle">Welcome to Stratego</h2>
+                    <p class="about__text">
+                    A little info about the game STRATEGO. This game is part of our project for our class Web Technologies at the
+                    University of Applied Science HTWG Konstanz and is a continuation of the project in software engineering.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+            <!-- ===== GAMEPLAY ===== -->
+        <section class="gameplay section" id="gameplay">
+            <h2 class="section-title">Gameplay</h2>
+
+            <div class="gameplay__container bd-grid">
+                <div>
+                    <p class="gameplay__text">
+                    Stratego is a strategy board game for two players. Each player has 40 pieces representing different characters.
+                    <br><br>
+                    We modified the game a little bit so you can walk with all characters (except flag and bomb) just one field up, down, to the right or to the left. You also can attack the oppenents with your figures. To win the game you have to find and attack the flag of your enemy.
+                    <br><br>
+                    The figures are ranked from highest to lowest as follows:
+                    </p>
+                    <br>
+                    <ul>
+                        <li>Bomb (&#x1F4A3;)</li>
+                        <li>Marshal (&#x1F482;)</li>
+                        <li>General (9)</li>
+                        <li>Colonel (8)</li>
+                        <li>Major (7)</li>
+                        <li>Captain (6)</li>
+                        <li>Lieutenant (5)</li>
+                        <li>Sergeant (4)</li>
+                        <li>Miner (3)</li>
+                        <li>Scout (2)</li>
+                        <li>Spy (1)</li>
+                        <li>Flag (&#x1F3F3;)</li>
+                    </ul>
+                    <br>
+                    <p class="gameplay__text">
+                        Important rules:
+                    </p>
+                    <br>
+                    <ul>
+                        <li>Flag is the most important figure</li>
+                        <li>Miner and Bomb: only the miner can defuse the Bomb</li>
+                        <li>Every other figure loses against the Bomb</li>
+                        <li>Spy and Marshal: only Spy can beat the Marshal except the bomb</li>
+                        <li>Flag and Bomb can't be moved</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+            <!-- ===== WORK ===== -->
+        <section class="play section" id="play">
+            <h2 class="section-title">Play</h2>
+
+            <div class="play__container bd-grid">
+            </div>
+        </section>
+    </main>
+
+        <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p class="footer__title">Stratego</p>
+
+        <div class="footer__social">
+            <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="footer__icon"><i class="fab fa-github"></i>Desktop-App</a>
+            <a href="https://github.com/WalterVoetschCortes/de.htwg.wt.StrategoInScala" target="_blank" class="footer__icon"><i class="fab fa-github"></i>Web-App</a>
+        </div>
+
+        <p>&#169; 2020 by Walter V?tsch Cort?s and Axel Schwarz</p>
+    </footer>
+
+
 
 }
