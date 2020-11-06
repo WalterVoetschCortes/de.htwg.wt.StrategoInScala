@@ -1,6 +1,6 @@
 /*===== GOOGLE FONTS =====*/
-@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@500;600&display=swap');
-
+@font-face { font-family: Nova Cut; src: url('../fonts/Nova_Cut/NovaCut-Regular.ttf'); }
+@font-face { font-family: Nova Oval; src: url('../fonts/Nova_Oval/NovaOval-Regular.ttf'); }
 
 /*===== VARIABLES CSS =====*/
 :root{
@@ -11,7 +11,9 @@
 /*===== COLORS =====*/
 :root{
     --first-color: #BF7E04;
-    --second-color: #3A3A3A;
+    --second-color: #2E1206;
+
+    --background-color:#F2F2F2;
 
     /* color palette */
     --one-color: #F5BE4C;
@@ -22,7 +24,7 @@
 
 /*===== FONTS =====*/
 :root{
-    --body-font: 'Grenze Gotisch', Semi-bold 600;
+    --body-font:'Nova Cut';
     --big-font-size: 2rem;
     --h2-font-size: 1.25rem;
     --normal-font-size: 1rem;
@@ -70,10 +72,14 @@ body{
 h1,h2,p{
     margin: 0;
 }
+p{
+    font-family: 'Nova Oval', sans-serif;
+}
 ul{
     margin: 0;
     padding: 0;
     list-style: square;
+    font-family: 'Nova Oval', sans-serif;
 }
 a{
     text-decoration: none;
@@ -125,7 +131,7 @@ img{
     top: 0;
     left: 0;
     z-index: var(--z-fixed);
-    background-color: #fff;
+    background-color: var(--background-color);
     box-shadow: 0 1px 4px rgba(146,161,176,.15);
 }
 
@@ -136,6 +142,10 @@ img{
     justify-content: space-between;
     align-items: center;
     font-weight: var(--font-semi);
+}
+
+.nav__list{
+    font-family: 'Nova Cut', sans-serif;
 }
 @media screen and (max-width: 768px){
     .nav__menu{
