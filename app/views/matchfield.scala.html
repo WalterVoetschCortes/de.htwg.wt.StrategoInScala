@@ -1,0 +1,51 @@
+@(controller:de.htwg.se.stratego.controller.controllerComponent.ControllerInterface)
+
+@main("Stratego"){
+    <h1>Stratego</h1>
+    <div class="container">
+        <div class="board">
+        @for(row <- 0 until controller.getSize) {
+            @for(col <- 0 until controller.getSize) {
+                @{
+                    if(controller.getField.field(row,col).isSet) {
+                        if (controller.getField.field(row, col).colour.get.value == 0) {
+                                <td class="cell__blue">
+                                @{
+                                    if(controller.getField.field(row, col).character.get.figure.name.equals("F")) {
+                                            <span class="cell__flag">&#x1F3F3;</span>
+                                    } else if(controller.getField.field(row, col).character.get.figure.name.equals("B")) {
+                                            <span class="cell__bomb">&#x1F4A3;</span>
+                                    } else if(controller.getField.field(row, col).character.get.figure.name.equals("M")) {
+                                            <span class="cell__marshal">&#x1F482;</span>
+                                    } else {
+                                            <span class="cell__figure">@{controller.getField.field(row, col).character.get.figure.name}</span>
+                                    }
+                                }
+                                </td>
+                        } else if (controller.getField.field(row, col).colour.get.value == 1) {
+                                <td class="cell__red">
+                                @{
+                                    if(controller.getField.field(row,col).character.get.figure.name.equals("F")){
+                                        <span class="cell__flag">&#x1F3F3;</span>
+                                    }else if(controller.getField.field(row,col).character.get.figure.name.equals("B")){
+                                        <span class="cell__bomb">&#x1F4A3;</span>
+                                    }else if(controller.getField.field(row,col).character.get.figure.name.equals("M")){
+                                        <span class="cell__marshal">&#x1F482;</span>
+                                    }else{
+                                        <span class="cell__figure">@{controller.getField.field(row, col).character.get.figure.name}</span>
+                                    }
+                                }
+                                </td>
+                        }
+                    }else{
+                            <td class="cell__green">
+                            <span class="cell__empty"> </span>
+                            </td>
+                    }
+                }
+            }
+            <br>
+            }
+        </div>
+    </div>
+}

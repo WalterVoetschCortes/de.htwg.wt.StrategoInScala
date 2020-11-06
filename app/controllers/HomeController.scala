@@ -21,7 +21,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def stratego = Action {
-    Ok(matchFieldText)
+    Ok(views.html.matchfield(gameController))
   }
 
   def newGame() = Action {
