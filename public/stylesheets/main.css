@@ -25,14 +25,16 @@
 /*===== FONTS =====*/
 :root{
     --body-font:'Nova Cut';
-    --big-font-size: 2rem;
+    --big-font-size: 1.75rem;
     --h2-font-size: 1.25rem;
     --normal-font-size: 1rem;
+    --small-font-size: 0.9rem;
+    --extra-small-font-size: 0.8rem;
 }
 
 @media screen and (min-width: 768px){
     :root{
-        --big-font-size: 3.5rem;
+        --big-font-size: 2.45rem;
         --h2-font-size: 2rem;
         --normal-font-size: 1.25rem;
     }
@@ -181,6 +183,9 @@ img{
 .nav__logo{
     color: var(--second-color);
 }
+.nav__logo img{
+    width: 100px;
+}
 .nav__toggle{
     color: var(--second-color);
     font-size: 1.5rem;
@@ -215,6 +220,10 @@ img{
     display: block;
 }
 
+.home__data{
+    margin: auto;
+}
+
 .home__social{
     display: flex;
     margin-left: auto;
@@ -237,15 +246,19 @@ img{
 /*===== BUTTONS =====*/
 .button{
     display: inline-block;
-    background-color: var(--first-color);
-    color: #fff;
+    color: var(--first-color);
     padding: .75rem 2.5rem;
     font-weight: var(--font-semi);
-    border-radius: .5rem;
+    font-size: var(--big-font-size);
+    border: none;
+    cursor: pointer;
+
+    transition: 1s; /*animation*/
+
 }
 
 .button:hover{
-    box-shadow: 0 10px 36px rgba(0,0,0,0.15);
+    transform: scale(1.3); /*zoom*/
 }
 
 /*===== ABOUT =====*/
@@ -310,9 +323,17 @@ img{
     padding: 2rem 0;
 }
 
+.footer p{
+    font-size: var(--extra-small-font-size);
+}
+
 .footer__title{
-    font-size: 2rem;
     margin-bottom: var(--mb-4);
+}
+.footer__title img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
 }
 
 .footer__social{
@@ -320,7 +341,7 @@ img{
 }
 
 .footer__icon{
-    font-size: 1.5rem;
+    font-size: var(--small-font-size);
     color: #fff;
     margin: 0 var(--mb-2);
 }
@@ -381,6 +402,8 @@ img{
 
     .home__social-icon {
         margin-bottom: 0;
+    }
+    .home__social-icon-left{
         margin-right: var(--mb-4);
     }
 
@@ -405,6 +428,14 @@ img{
 
     .play__container{
         align-items: center;
+    }
+
+    .footer__icon {
+        font-size: var(--normal-font-size);
+    }
+
+    .footer p{
+        font-size: var(--small-font-size);
     }
 
 

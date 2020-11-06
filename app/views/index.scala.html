@@ -6,7 +6,7 @@
     <header class="l-header">
         <nav class="nav bd-grid">
             <div>
-                <a href="#" class="nav__logo">Stratego</a>
+                <a href="#" class="nav__logo"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
             </div>
 
             <div class="nav__menu" id="nav-menu">
@@ -32,9 +32,11 @@
                 <div class="home__img">
                     <img src="@routes.Assets.versioned("images/stratego.jpg")" alt="StrategoLogo">
                 </div>
-
+                <div class="home__data">
+                    <a href="#play" class="button">Play</a>
+                </div>
                 <div class="home__social">
-                    <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="home__social-icon"><i class="fab fa-github"></i>Desktop-App</a>
+                    <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="home__social-icon-left home__social-icon"><i class="fab fa-github"></i>Desktop-App</a>
                     <a href="https://github.com/WalterVoetschCortes/de.htwg.wt.StrategoInScala" target="_blank" class="home__social-icon"><i class="fab fa-github"></i>Web-App</a>
                 </div>
 
@@ -114,7 +116,7 @@
 
         <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <p class="footer__title">Stratego</p>
+        <div class="footer__title"><img src="@routes.Assets.versioned("images/logo-rev.png")" alt="StrategoLogo"></div>
 
         <div class="footer__social">
             <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="footer__icon"><i class="fab fa-github"></i>Desktop-App</a>
