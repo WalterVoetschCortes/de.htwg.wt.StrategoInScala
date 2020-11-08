@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.gameboard{
+    align-self: center;
+    background-color: var(--second-color);
+}
+
+.cell{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    margin: 2px;
+    color: #fff;
+}
+.cells__red{
+    background-color: var(--red-color);
+}
+.cells__blue{
+    background-color: var(--blue-color);
+}
+.cells__green{
+    background-color: var(--green-color);
+}
+.cell:hover {
+    background-color: var(--second-color);
+    transition: all 0.2s ease-in;
+}
