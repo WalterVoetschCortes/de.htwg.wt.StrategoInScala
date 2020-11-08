@@ -1,3 +1,4 @@
+
 .container{
     display: flex;
     justify-content: center;
@@ -9,9 +10,8 @@
 }
 
 .cell{
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+    width: 44px;
+    height: 44px;
     text-align: center;
     vertical-align: middle;
     margin: 2px;
@@ -19,14 +19,23 @@
 }
 .cells__red{
     background-color: var(--red-color);
+    cursor: pointer;
 }
 .cells__blue{
     background-color: var(--blue-color);
+    cursor: pointer;
 }
 .cells__green{
     background-color: var(--green-color);
 }
-.cell:hover {
+.cells__blue:hover{
     background-color: var(--second-color);
     transition: all 0.2s ease-in;
+    font-size:130%;
 }
+.cells__red:hover{
+    background-color: var(--second-color);
+    transition: all 0.2s ease-in;
+    font-size:130%;
+}
+
