@@ -584,8 +584,8 @@ img{
 }
 .character-card__unit-stats .stat-value {
     text-transform: uppercase;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 300;
+    font-size: 7px;
 }
 .character-card__unit-stats .no-border {
     border-right: none;
@@ -771,6 +771,11 @@ img{
     }
     .character-card__image--twelve img{
         height: 200px;
+    }
+
+    .character-card__unit-stats .stat-value {
+        font-weight: 400;
+        font-size: 12px;
     }
 
     .footer__icon {
