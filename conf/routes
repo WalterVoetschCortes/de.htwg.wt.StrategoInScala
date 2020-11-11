@@ -8,6 +8,8 @@ GET     /                                   controllers.HomeController.index
 
 GET     /stratego                           controllers.HomeController.stratego
 
+GET     /menu                               controllers.HomeController.menu
+
 GET     /newGame                            controllers.HomeController.newGame
 
 GET     /load                               controllers.HomeController.load

@@ -24,6 +24,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.matchfield(gameController))
   }
 
+  def menu = Action {
+    Ok(views.html.menu(gameController))
+  }
+
   def newGame() = Action {
     Stratego.tui.processInputLine("n")
     Ok(matchFieldText)
