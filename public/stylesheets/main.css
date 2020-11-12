@@ -13,7 +13,7 @@
     --first-color: #BF7E04;
     --second-color: #2E1206;
 
-    --background-color:#F2F2F2;
+    --background-color: #fae9c5;
 
     /* color palette */
     --yellow-color: #F5BE4C;
@@ -158,7 +158,7 @@ img{
         height: 100%;
         padding: 2rem;
         background-color: var(--second-color);
-        transition: .5s;
+        transition: .2s;
     }
 }
 .nav__item{
@@ -253,7 +253,7 @@ img{
     border: none;
     cursor: pointer;
 
-    transition: 1s; /*animation*/
+    transition: 0.2s; /*animation*/
 
 }
 

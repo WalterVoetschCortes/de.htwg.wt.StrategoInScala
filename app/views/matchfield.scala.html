@@ -1,6 +1,8 @@
 @(controller:de.htwg.se.stratego.controller.controllerComponent.ControllerInterface)
 
+
 @main("Stratego"){
+
     <!-- ===== HEADER ===== -->
     <header class="l-header">
         <nav class="nav bd-grid">
@@ -15,7 +17,6 @@
     </header>
 
     <main class ="l-main">
-
             <!-- ===== Game ===== -->
         <section class="home bd-grid" id="home">
         <div class="gameboard__container">
@@ -23,43 +24,50 @@
             @for(row <- 0 until controller.getSize) {
                 <tr>
                 @for(col <- 0 until controller.getSize) {
-                    @{
-                        if(controller.getField.field(row,col).isSet) {
-                            if (controller.getField.field(row, col).colour.get.value == 0) {
-                                    <td class="cells__blue cell">
-                                    {
-                                        if(controller.getField.field(row, col).character.get.figure.name.equals("F")) {
-                                                <span class="cell__blue">&#x1F3F3;</span>
-                                        } else if(controller.getField.field(row, col).character.get.figure.name.equals("B")) {
-                                                <span class="cell__blue">&#x1F4A3;</span>
-                                        } else if(controller.getField.field(row, col).character.get.figure.name.equals("M")) {
-                                                <span class="cell__blue">&#x1F482;</span>
-                                        } else {
-                                                <span class="cell__blue">{controller.getField.field(row, col).character.get.figure.name}</span>
-                                        }
+                        @if(controller.getField.field(row,col).isSet) {
+                            @if(controller.getField.field(row, col).colour.get.value == 0) {
+                                <td class="cells__blue cell">
+                                    @controller.getField.field(row, col).character.get.figure.name match {
+                                        case "F" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>}
+                                        case "B" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>}
+                                        case "M" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>}
+                                        case "1" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>}
+                                        case "2" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>}
+                                        case "3" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>}
+                                        case "4" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>}
+                                        case "5" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>}
+                                        case "6" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>}
+                                        case "7" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>}
+                                        case "8" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>}
+                                        case "9" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>}
+                                        case _ => {}
                                     }
-                                    </td>
+                                </td>
                             } else if (controller.getField.field(row, col).colour.get.value == 1) {
-                                    <td class="cells__red cell">
-                                    {
-                                        if(controller.getField.field(row,col).character.get.figure.name.equals("F")){
-                                            <span class="cell__red">&#x1F3F3;</span>
-                                        }else if(controller.getField.field(row,col).character.get.figure.name.equals("B")){
-                                            <span class="cell__red">&#x1F4A3;</span>
-                                        }else if(controller.getField.field(row,col).character.get.figure.name.equals("M")){
-                                            <span class="cell__red">&#x1F482;</span>
-                                        }else{
-                                            <span class="cell__red">{controller.getField.field(row, col).character.get.figure.name}</span>
-                                        }
+                                <td class="cells__red cell">
+                                    @controller.getField.field(row, col).character.get.figure.name match {
+                                        case "F" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>}
+                                        case "B" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>}
+                                        case "M" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>}
+                                        case "1" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>}
+                                        case "2" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>}
+                                        case "3" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>}
+                                        case "4" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>}
+                                        case "5" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>}
+                                        case "6" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>}
+                                        case "7" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>}
+                                        case "8" => { <span class="cell__red"> <img class="piece"src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>}
+                                        case "9" => { <span class="cell__red"> <img class="piece"src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>}
+                                        case _ => {}
                                     }
-                                    </td>
+                                </td>
                             }
                         }else{
                                 <td class="cells__green cell">
                                 <span class="cell__empty"> </span>
                                 </td>
                         }
-                    }
+
                 }
                 </tr>
                 }
