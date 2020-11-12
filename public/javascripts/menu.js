@@ -10,11 +10,11 @@ const showMenu = (toggleID, navID) => {
     }
 }
 
-showMenu('navToggler','navMenu')
+showMenu('navbarToggler','navbarMenu')
 
 
 /*===== ACTIVATE AND REMOVE MENU =====*/
-const navLink = document.querySelectorAll('.nav___link')
+const navLink = document.querySelectorAll('.nav__link')
 
 function linkAction() {
     // active link
@@ -22,7 +22,7 @@ function linkAction() {
     this.classList.add('active')
 
     // remove menu mobile
-    const navMenu = document.getElementById('navbarMenu')
+    const navMenu = document.getElementById('nav-menu')
     navMenu.classList.remove('show')
 }
 
