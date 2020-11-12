@@ -3,26 +3,21 @@
 
     <!-- ===== HEADER ===== -->
     <header class="l-header">
-        <nav class="nav bd-grid navbar-expand-md">
-            <div>
-                <a href="#" class="nav__logo"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
-            </div>
+        <nav class="navbar navbar-expand-sm bd-grid">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <a href="#" class="nav__logo navbar-brand"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu" id="navbarToggler">
                 <i class="fas fa-bars"></i>
             </button>
 
-            <div class="nav__menucollapse navbar-collapse" id="nav-menu" bis_skin_checked="1">
-                <ul class="nav__list navbar-nav mr-auto">
-                    <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="#gameplay" class="nav__link">Gameplay</a></li>
-                    <li class="nav__item"><a href="#characters" class="nav__link">Characters</a></li>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="#home" class="nav__link nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav__link nav-link">About</a></li>
+                    <li class="nav-item"><a href="#gameplay" class="nav__link nav-link">Gameplay</a></li>
+                    <li class="nav-item"><a href="#characters" class="nav__link nav-link">Characters</a></li>
                 </ul>
-            </div>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
             </div>
         </nav>
     </header>

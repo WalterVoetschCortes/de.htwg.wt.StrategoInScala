@@ -5,15 +5,35 @@
 
     <!-- ===== HEADER ===== -->
     <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav__logo"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
-            </div>
+        <nav class="navbar navbar-expand-sm bd-grid">
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
+            <a href="#" class="nav__logo navbar-brand"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="@{routes.HomeController.index()}" target="_blank" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Game</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">New Game</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Load</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Save</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Quit</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
+
     </header>
 
     <main class ="l-main">
@@ -67,7 +87,6 @@
                                 <span class="cell__empty"> </span>
                                 </td>
                         }
-
                 }
                 </tr>
                 }
