@@ -3,13 +3,17 @@
 
     <!-- ===== HEADER ===== -->
     <header class="l-header">
-        <nav class="nav bd-grid">
+        <nav class="nav bd-grid navbar-expand-md">
             <div>
                 <a href="#" class="nav__logo"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
             </div>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav__menucollapse navbar-collapse" id="nav-menu" bis_skin_checked="1">
+                <ul class="nav__list navbar-nav mr-auto">
                     <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
                     <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                     <li class="nav__item"><a href="#gameplay" class="nav__link">Gameplay</a></li>
@@ -518,6 +522,7 @@
 
         <!-- ===== MENU JS ===== -->
     <script src="@routes.Assets.versioned("javascripts/menu.js")"></script>
+
 
 
 

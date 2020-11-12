@@ -12,6 +12,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+            <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
         <!-- styles -->
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/gameboard.css")">
@@ -20,6 +23,8 @@
 
         <!-- fontawesome icons -->
         <link href="@routes.Assets.versioned("fontawesome-free-5.15.1-web/css/all.css")" rel="stylesheet" media="screen">
+
+
 
         <!-- slider -->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
@@ -37,5 +42,9 @@
         @* And here's where we render the `Html` object containing
         * the page content. *@
         @content
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     </body>
 </html>

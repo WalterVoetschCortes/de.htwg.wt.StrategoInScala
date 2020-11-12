@@ -86,6 +86,10 @@ ul{
 a{
     text-decoration: none;
 }
+a:hover{
+    text-decoration: none;
+    color: var(--first-color);
+}
 img{
     max-width: 100%;
     height: auto;
@@ -190,6 +194,9 @@ img{
     color: var(--second-color);
     font-size: 1.5rem;
     cursor: pointer;
+}
+.navbar-toggler-icon{
+    color: var(--second-color);
 }
 
 /*===== ACTIVE MENU =====*/
