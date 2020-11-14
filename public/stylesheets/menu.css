@@ -1,20 +1,80 @@
 
-.menu__container{
+.menu {
+    background: url("../images/menu3.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    height: 100%;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
 }
 
-.menu{
-    align-self: center;
+.form-newGame {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-newGame .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-newGame .form-control:focus {
+    z-index: 2;
+    border-color: var(--first-color);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px var(--first-color);
+    outline: 0 none;
+}
+.form-newGame input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.menuLogo{
+    margin-bottom: var(--mb-3);
+}
+
+#inputPlayer1{
+    color: var(--second-color);
+    margin-bottom: var(--mb-1);
+}
+#inputPlayer2{
+    color: var(--second-color);
+}
+.newGameButton{
+    margin-top: var(--mb-2);
+
+}
+.menuButton{
     background-color: var(--second-color);
+    border: none;
 }
-.name_field{
-    width: 128px;
-    font-size: var(--normal-font-size);
+.menuButton:hover{
+    background-color: var(--first-color);
 }
-.button{
-    font-family: var(--body-font);
-    background-color: transparent;
+
+.or{
+    margin-top: var(--mb-4);
+    margin-bottom: var(--mb-4);
+    color: var(--second-color);
+    font-weight: 900;
 }
+.copy{
+    font-size: 0.6rem;
+    color: var(--second-color);
+    margin-top: var(--mb-1);
+}
+

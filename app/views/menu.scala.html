@@ -1,31 +1,24 @@
 @(controller:de.htwg.se.stratego.controller.controllerComponent.ControllerInterface)
 
 @main("Stratego Menu"){
-    <!-- ===== HEADER ===== -->
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav__logo"><img src="@routes.Assets.versioned("images/logo.png")" alt="StrategoLogo"></a>
-            </div>
+    <!-- ===== Menu (using bootstrap) ===== -->
+    <div class="menu">
+            <form class="form-newGame">
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
-    </header>
+                <img class="menuLogo" src="@routes.Assets.versioned("images/logo.png")" alt="Logo">
+                <label for="inputPlayer1 nameLabel" class="sr-only">Name of Player 1</label>
+                <input type="text" id="inputPlayer1" class="nameInput form-control" placeholder="Player 1" required autofocus>
+                <label for="inputPlayer2 nameLabel" class="sr-only">Name of Player 2</label>
+                <input type="text" id="inputPlayer2" class="nameInput form-control" placeholder="Player 2" required autofocus>
 
-    <main class ="l-main">
+                <button class="menuButton newGameButton btn btn-lg btn-primary btn-block" type="submit">New Game</button>
 
-            <!-- ===== Menu ===== -->
-        <section class="home bd-grid" id="home">
-            <div class="menu__container" >
-                <form action="" method="get" id="game_start">
-                    <input type="text" id="input_name1" placeholder="Player 1" name="Name 1" class="name_field"/>
-                    <input type="text" id="input_name2" placeholder="Player 2" name="Name 2" class="name_field"/>
-                    <button class="button" type="submit">New Game</button>
-                    <button class="button" type="button">Load Game</button>
-                </form>
-            </div>
-        </section>
-    </main>
+                <p class="or">--- or ---</p>
+
+                <button class="menuButton btn btn-lg btn-primary btn-block" type="submit">Load Game</button>
+
+                <p class="mt-5 mb-3 text-muted copy">&#169; 2020 by Walter Voetsch Cortes and Axel Schwarz</p>
+            </form>
+        </div>
+
 }
