@@ -657,6 +657,59 @@ a:focus {
 }
 
 
+/*===== DEVELOPMENT =====*/
+.development__container{
+    text-align: center;
+}
+.development__text{
+    margin-bottom: var(--mb-4);
+    color: var(--second-color);
+}
+.fa-code{
+    color: var(--blue-color);
+}
+.fa-bold{
+    color: var(--green-color);
+}
+.fa-css3{
+    color: var(--red-color)
+}
+.fa-code, .fa-bold, .fa-css3{
+    font-size: var(--extra-big-font-size);
+    margin-bottom: var(--mb-1);
+}
+.development__description{
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-3);
+    color: var(--second-color);
+}
+
+/*=== Collapse Button to Play ===*/
+.collapse__button{
+    width: 100%;
+    border:none;
+    background-color: var(--first-color);
+    color: #fff;
+    cursor: pointer;
+}
+.collapse__button:focus{
+    outline: 0;
+}
+.collapse__world{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background: url("../images/menu3.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.button__playCollapse{
+    color: #fff;
+}
+
 /*===== FOOTER =====*/
 .footer{
     background-color: var(--second-color);
@@ -687,31 +740,6 @@ a:focus {
     font-size: var(--small-font-size);
     color: #fff;
     margin: 0 var(--mb-2);
-}
-
-/*===== DEVELOPMENT =====*/
-.development__container{
-    text-align: center;
-}
-.development__text{
-    margin-bottom: var(--mb-4);
-}
-.fa-code{
-    color: var(--blue-color);
-}
-.fa-bold{
-    color: var(--green-color);
-}
-.fa-css3{
-    color: var(--red-color)
-}
-.fa-code, .fa-bold, .fa-css3{
-    font-size: var(--extra-big-font-size);
-    margin-bottom: var(--mb-1);
-}
-.development__description{
-    font-size: var(--small-font-size);
-    margin-bottom: var(--mb-3);
 }
 
 /*===== MEDIA QUERIES =====*/

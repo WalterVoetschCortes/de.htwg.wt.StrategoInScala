@@ -32,7 +32,7 @@
                     <img src="@routes.Assets.versioned("images/stratego.jpg")" alt="StrategoLogo">
                 </div>
                 <div class="home__data">
-                    <a href="@{routes.HomeController.stratego()}" class="button">Play</a>
+                    <a href="@{routes.HomeController.menu()}" class="button">Play</a>
                 </div>
                 <div class="home__social">
                     <a href="https://github.com/BenjaminMannsdoerfer/Stratego" target="_blank" class="home__social-icon-left home__social-icon"><i class="fab fa-github"></i>Desktop-App</a>
@@ -532,6 +532,15 @@
             </div>
         </div>
     </section>
+
+    <button class="collapse__button" data-toggle="collapse" data-target="#playCollapse">And now click and enter the world of Stratego!</button>
+    <div id="playCollapse" class="collapse">
+        <div class="container-fluid padding">
+            <div class="row text-center collapse__world">
+                <a href="@{routes.HomeController.menu()}" class="button button__playCollapse">Play</a>
+            </div>
+        </div>
+    </div>
 
         <!-- ===== FOOTER ===== -->
     <footer class="footer">
