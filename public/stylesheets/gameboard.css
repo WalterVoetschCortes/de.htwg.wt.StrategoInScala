@@ -21,6 +21,9 @@
     display: block;
     margin: auto;
 }
+.piece img{
+    filter: invert(10%) sepia(7%) saturate(5987%) hue-rotate(339deg) brightness(96%) contrast(100%);
+}
 .cells__red{
     background-color: var(--red-color);
     cursor: pointer;
