@@ -709,6 +709,9 @@ a:focus {
 .button__playCollapse{
     color: #fff;
 }
+.button__playCollapse:hover{
+    color: #fff;
+}
 
 /*===== FOOTER =====*/
 .footer{
