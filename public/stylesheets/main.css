@@ -25,6 +25,7 @@
 /*===== FONTS =====*/
 :root{
     --body-font:'Nova Cut';
+    --extra-big-font-size: 2.5rem;
     --big-font-size: 1.75rem;
     --h2-font-size: 1.25rem;
     --normal-font-size: 1rem;
@@ -688,6 +689,30 @@ a:focus {
     margin: 0 var(--mb-2);
 }
 
+/*===== DEVELOPMENT =====*/
+.development__container{
+    text-align: center;
+}
+.development__text{
+    margin-bottom: var(--mb-4);
+}
+.fa-code{
+    color: var(--blue-color);
+}
+.fa-bold{
+    color: var(--green-color);
+}
+.fa-css3{
+    color: var(--red-color)
+}
+.fa-code, .fa-bold, .fa-css3{
+    font-size: var(--extra-big-font-size);
+    margin-bottom: var(--mb-1);
+}
+.development__description{
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-3);
+}
 
 /*===== MEDIA QUERIES =====*/
 @media screen and (min-width: 768px) {
@@ -709,13 +734,9 @@ a:focus {
         top: 3rem;
     }
 
-
     .nav-link{
         margin-left: var(--mb-6);
     }
-
-
-
 
     .nav {
         height: calc(var(--header-height) + 1rem);
