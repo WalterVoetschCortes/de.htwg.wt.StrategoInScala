@@ -3,19 +3,29 @@
 @main("Stratego Menu"){
     <!-- ===== Menu (using bootstrap) ===== -->
     <div class="menu">
-            <form class="form-newGame">
+            <form class="form-newGame" id="form">
 
                 <img class="menuLogo" src="@routes.Assets.versioned("images/logo.png")" alt="Logo">
-                <label for="inputPlayer1 nameLabel" class="sr-only">Name of Player 1</label>
-                <input type="text" id="inputPlayer1" class="nameInput form-control" placeholder="Player 1" required autofocus>
-                <label for="inputPlayer2 nameLabel" class="sr-only">Name of Player 2</label>
-                <input type="text" id="inputPlayer2" class="nameInput form-control" placeholder="Player 2" required autofocus>
 
-                <button class="menuButton newGameButton btn btn-lg btn-primary btn-block" type="submit">New Game</button>
+                <div class="nameWrapper">
+                    <input type="text" id="inputPlayer1" class="nameInput form-control" placeholder="Player 1" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+
+                <div class="nameWrapper">
+                    <input type="text" id="inputPlayer2" class="nameInput form-control error" placeholder="Player 2" />
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+
+                <button class="menuButton newGameButton ">New Game</button>
 
                 <p class="or">---- or ----</p>
 
-                <button class="menuButton btn btn-lg btn-primary btn-block" type="submit">Load Game</button>
+                <button class="menuButton">Load Game</button>
 
                 <p class="mt-5 mb-3 copy">&#169; 2020 by Walter Voetsch Cortes and Axel Schwarz</p>
             </form>
