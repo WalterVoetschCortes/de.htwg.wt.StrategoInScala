@@ -31,6 +31,9 @@ function checkInputs() {
     }
     if(player1Value === player2Value){
         setErrorForBoth(player1, player2, 'Names cannot be the same!')
+        if(player1Value === ''){
+            setErrorForBoth(player1, player2, 'Names are not set!')
+        }
     }
 }
 
