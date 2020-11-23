@@ -72,11 +72,12 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 
   def move(dir: String, row: String, col: String) = Action {
     Stratego.tui.processInputLine("m " + dir + row + col)
-    Ok(matchFieldText)
+    Ok(views.html.matchfield(gameController))
 
   }
 
   def attack(rowA: String, colA: String, rowD: String, colD: String) = Action {
     Ok(Stratego.tui.processInputLine("a " + rowA + colA + rowD + colD) + "\n" + matchFieldText)
+    Ok(views.html.matchfield(gameController))
   }
 }
