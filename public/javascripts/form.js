@@ -2,6 +2,10 @@ const form = document.getElementById('form');
 const player1 = document.getElementById('inputPlayer1');
 const player2 = document.getElementById('inputPlayer2');
 
+$('#loadButton').click(function() {
+    location.href='/load';
+});
+
 form.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -18,6 +22,10 @@ function checkInputs() {
         //show error
         //add error class
         setErrorFor(player1, 'Set name of Player 1!')
+        if(player2Value === ''){
+            setErrorForBoth(player1, player2, 'Names are not set!')
+        }
+        return;
     }else{
         setSuccessFor(player1)
         //add success class
@@ -26,15 +34,22 @@ function checkInputs() {
         //show error
         //add error class
         setErrorFor(player2, 'Set name of Player 2!')
-    }else {
-        setSuccessFor(player2)
-    }
-    if(player1Value === player2Value){
-        setErrorForBoth(player1, player2, 'Names cannot be the same!')
         if(player1Value === ''){
             setErrorForBoth(player1, player2, 'Names are not set!')
         }
+        return;
+    }else {
+        setSuccessFor(player2)
     }
+    if(player1Value.toUpperCase() === player2Value.toUpperCase()){
+        setErrorForBoth(player1, player2, 'Names cannot be the same!')
+        return;
+    }
+
+
+
+    location.href='/setPlayers/' + player1Value + '/' + player2Value;
+
 }
 
 function setErrorFor(input, message) {

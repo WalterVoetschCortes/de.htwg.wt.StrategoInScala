@@ -30,33 +30,34 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 
   def newGame() = Action {
     Stratego.tui.processInputLine("n")
-    Ok(matchFieldText)
+    Ok(views.html.menu(gameController))
   }
 
   def load() = Action {
     Stratego.tui.processInputLine("l")
-    Ok(matchFieldText)
+    Ok(views.html.matchfield(gameController))
   }
 
   def save() = Action {
     Stratego.tui.processInputLine("s")
-    Ok(matchFieldText)
+    Ok(views.html.matchfield(gameController))
   }
 
   def undo() = Action {
     Stratego.tui.processInputLine("z")
-    Ok(matchFieldText)
+    Ok(views.html.matchfield(gameController))
   }
 
   def redo() = Action {
     Stratego.tui.processInputLine("r")
-    Ok(matchFieldText)
+    Ok(views.html.matchfield(gameController))
   }
 
   def setPlayers(player1: String, player2: String) = Action {
+    Stratego.tui.processInputLine("n")
     Stratego.tui.processInputLine(player1 + " " + player2)
-    Ok("Hello " + gameController.playerList(0) +
-    " and " + gameController.playerList(1) + "!")
+    Stratego.tui.processInputLine("i")
+    Ok(views.html.matchfield(gameController))
   }
 
   def initMatchfield() = Action {

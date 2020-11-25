@@ -3,7 +3,8 @@
 @main("Stratego Menu"){
     <!-- ===== Menu (using bootstrap) ===== -->
     <div class="menu">
-            <form class="form-newGame" id="form">
+        <div class="form-newGame">
+            <form id="form">
 
                 <img class="menuLogo" src="@routes.Assets.versioned("images/logo.png")" alt="Logo">
 
@@ -22,12 +23,13 @@
                 </div>
 
                 <button class="menuButton newGameButton ">New Game</button>
-
-                <p class="or">---- or ----</p>
-
-                <button class="menuButton">Load Game</button>
-
-                <p class="mt-5 mb-3 copy">&#169; 2020 by Walter Voetsch Cortes and Axel Schwarz</p>
             </form>
+
+            <p class="or">---- or ----</p>
+
+            <button class="menuButton" id="loadButton">Load Game</button>
+
+            <p class="mt-5 mb-3 copy">&#169; 2020 by Walter Voetsch Cortes and Axel Schwarz</p>
+            </div>
         </div>
 }
