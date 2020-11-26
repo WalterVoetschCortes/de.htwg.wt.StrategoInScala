@@ -50,7 +50,7 @@
             <!-- ===== Game ===== -->
         <section class="home bd-grid" id="home">
             <div class="gameboard__container">
-                <table class="gameboard">
+                <table class="gameboard" id="board">
                 @for(row <- 0 until controller.getSize) {
                     <tr>
                     @for(col <- 0 until controller.getSize) {
