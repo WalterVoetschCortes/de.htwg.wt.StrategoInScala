@@ -6,9 +6,8 @@ let rowD = 0
 let colD = 0
 let attacking = false
 
-
 $('.cell').click(function () {
-    if (attacking == false) {
+    if (attacking === false) {
         colA = this.parentElement.rowIndex
         rowA = this.cellIndex
     } else {
@@ -21,18 +20,14 @@ $('.cell').click(function () {
 
 
 function checkKeyPress(key) {
-    if (key.keyCode == "65") {
-        attacking = true
-    } else {
-        attacking = false
-    }
-    if (key.keyCode == "37") {
+    attacking = key.keyCode === "65";
+    if (key.keyCode === "37") {
         dir = "l"
-    } else if (key.keyCode == "38") {
+    } else if (key.keyCode === "38") {
         dir = "u"
-    } else if (key.keyCode == "39") {
+    } else if (key.keyCode === "39") {
         dir = "r"
-    } else if (key.keyCode == "40") {
+    } else if (key.keyCode === "40") {
         dir = "d"
     }
     window.location = "/move/" + dir + "/" + colA + "/" + rowA
