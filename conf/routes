@@ -30,6 +30,8 @@ GET     /move/:dir/:row/:col                controllers.HomeController.move(dir:
 
 GET     /attack/:rowA/:colA/:rowD/:colD     controllers.HomeController.attack(rowA: String, colA: String, rowD: String, colD: String)
 
+GET     /json                               controllers.HomeController.gameToJson
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
