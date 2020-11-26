@@ -24,25 +24,25 @@
 .piece img{
     filter: invert(10%) sepia(7%) saturate(5987%) hue-rotate(339deg) brightness(96%) contrast(100%);
 }
-.cells__red{
+.cells_red{
     background-color: var(--red-color);
     cursor: pointer;
 }
-.cells__blue{
+.cells_blue{
     background-color: var(--blue-color);
     cursor: pointer;
 }
 .cells__green{
     background-color: var(--green-color);
 }
-.cells__blue:hover{
+.cells_blue:hover{
     background-color: var(--background-color);
-    transition: all 0.2s ease-in;
+    transition: all 0.1s ease-in;
     font-size:130%;
 }
-.cells__red:hover{
+.cells_red:hover{
     background-color: var(--background-color);
-    transition: all 0.2s ease-in;
+    transition: all 0.1s ease-in;
     font-size:130%;
 }
 

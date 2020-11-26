@@ -1,7 +1,7 @@
-@(controller:de.htwg.se.stratego.controller.controllerComponent.ControllerInterface)
+@(controller: de.htwg.se.stratego.controller.controllerComponent.ControllerInterface)
 
 
-@main("Stratego"){
+@main("Stratego") {
 
     <!-- ===== HEADER ===== -->
     <header class="l-header">
@@ -19,7 +19,8 @@
                         <a href="/#gameplay" target="_blank" class="nav-link">Gameplay</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Game</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            Game</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/newGame">New Game</a>
                             <div class="dropdown-divider"></div>
@@ -31,7 +32,8 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Edit</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            Edit</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/undo">Undo</a>
                             <div class="dropdown-divider"></div>
@@ -47,61 +49,185 @@
     <main class ="l-main">
             <!-- ===== Game ===== -->
         <section class="home bd-grid" id="home">
-        <div class="gameboard__container">
-            <table class="gameboard">
-            @for(row <- 0 until controller.getSize) {
-                <tr>
-                @for(col <- 0 until controller.getSize) {
-                        @if(controller.getField.field(row,col).isSet) {
+            <div class="gameboard__container">
+                <table class="gameboard">
+                @for(row <- 0 until controller.getSize) {
+                    <tr>
+                    @for(col <- 0 until controller.getSize) {
+                        @if(controller.getField.field(row, col).isSet) {
                             @if(controller.getField.field(row, col).colour.get.value == 0) {
-                                <td class="cells__blue cell">
-                                    @controller.getField.field(row, col).character.get.figure.name match {
-                                        case "F" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>}
-                                        case "B" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>}
-                                        case "M" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>}
-                                        case "1" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>}
-                                        case "2" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>}
-                                        case "3" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>}
-                                        case "4" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>}
-                                        case "5" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>}
-                                        case "6" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>}
-                                        case "7" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>}
-                                        case "8" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>}
-                                        case "9" => { <span class="cell__blue"> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>}
-                                        case _ => {}
+                                <td class="cells_blue cell">
+                                @controller.getField.field(row, col).character.get.figure.name match {
+                                    case "F" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>
                                     }
+                                    case "B" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>
+                                    }
+                                    case "M" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>
+                                    }
+                                    case "1" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>
+                                    }
+                                    case "2" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>
+                                    }
+                                    case "3" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>
+                                    }
+                                    case "4" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>
+                                    }
+                                    case "5" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>
+                                    }
+                                    case "6" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>
+                                    }
+                                    case "7" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>
+                                    }
+                                    case "8" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>
+                                    }
+                                    case "9" => {
+                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>
+                                    }
+                                    case _ => {}
+                                }
                                 </td>
                             } else if (controller.getField.field(row, col).colour.get.value == 1) {
-                                <td class="cells__red cell">
-                                    @controller.getField.field(row, col).character.get.figure.name match {
-                                        case "F" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>}
-                                        case "B" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>}
-                                        case "M" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>}
-                                        case "1" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>}
-                                        case "2" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>}
-                                        case "3" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>}
-                                        case "4" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>}
-                                        case "5" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>}
-                                        case "6" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>}
-                                        case "7" => { <span class="cell__red"> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>}
-                                        case "8" => { <span class="cell__red"> <img class="piece"src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>}
-                                        case "9" => { <span class="cell__red"> <img class="piece"src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>}
-                                        case _ => {}
-                                    }
-                                </td>
+                            <td class="cells_red cell">
+                            @controller.getField.field(row, col).character.get.figure.name match {
+                                case "F" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>
+                                }
+                                case "B" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>
+                                }
+                                case "M" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>
+                                }
+                                case "1" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>
+                                }
+                                case "2" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>
+                                }
+                                case "3" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>
+                                }
+                                case "4" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>
+                                }
+                                case "5" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>
+                                }
+                                case "6" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>
+                                }
+                                case "7" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>
+                                }
+                                case "8" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>
+                                }
+                                case "9" => {
+                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>
+                                }
+                                case _ => {}
                             }
-                        }else{
-                                <td class="cells__green cell">
+                            </td>
+                            }
+                        } else {
+                            <td class="cells__green cell">
                                 <span class="cell__empty"> </span>
-                                </td>
+                            </td>
                         }
+                    }
+                    </tr>
                 }
-                </tr>
-                }
-            </table>
-        </div>
+                </table>
+            </div>
         </section>
-        <script src="@routes.Assets.versioned("javascripts/gameboard.js")"></script>
+        <script>
+                window.addEventListener("keydown", checkKeyPress, false)
+
+                let colA = 0
+                let rowA = 0
+                let rowD = 0
+                let colD = 0
+                let attacking = false
+                let selected
+
+
+                function truePlayer(cell) {
+                    let currentPlayer = 0
+                    currentPlayer =
+                    @controller.currentPlayerIndex
+                    if (currentPlayer == 0) {
+                        if (cell.classList.contains('cells_blue')) {
+                            return true
+                        }
+                    } else if (currentPlayer == 1) {
+                        if (cell.classList.contains('cells_red')) {
+                            return true
+                        }
+                    }
+                    return false
+                }
+
+
+                function deselect(cell) {
+                    if (cell.classList.contains('cells_blue')) {
+                        $(cell).css('background-color', 'var(--blue-color)')
+                    } else if (cell.classList.contains('cells_red')) {
+                        $(cell).css('background-color', 'var(--red-color)')
+                    }
+                }
+
+
+                $('.cell').click(function () {
+                    if (attacking == false) {
+                        colA = this.parentElement.rowIndex
+                        rowA = this.cellIndex
+                        if (truePlayer(this)) {
+                            if (selected) {
+                                deselect(selected)
+                            }
+                            selected = this
+                            $(this).css('background-color', 'yellow')
+                        }
+                    } else {
+                        colD = this.parentElement.rowIndex
+                        rowD = this.cellIndex
+                        window.location = "/attack/" + colA + "/" + rowA + "/" + colD + "/" + rowD
+                        attacking = false
+                    }
+                })
+
+
+                function checkKeyPress(key) {
+                    if (key.keyCode == "65") {
+                        attacking = true
+                        $(selected).css('background-color', 'red')
+                    } else {
+                        attacking = false
+                    }
+                    if (key.keyCode == "37") {
+                        dir = "l"
+                    } else if (key.keyCode == "38") {
+                        dir = "u"
+                    } else if (key.keyCode == "39") {
+                        dir = "r"
+                    } else if (key.keyCode == "40") {
+                        dir = "d"
+                    }
+                    window.location = "/move/" + dir + "/" + colA + "/" + rowA
+                }
+
+        </script>
     </main>
 
 }
