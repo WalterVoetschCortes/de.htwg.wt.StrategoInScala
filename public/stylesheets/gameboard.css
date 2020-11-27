@@ -1,13 +1,11 @@
+.game__conatiner{
+    margin-top: calc(var(--header-height) + 1rem);
+}
+
 .gameboard__container{
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.gameboard{
-    align-self: center;
-    background-color: var(--second-color);
+    margin-top: var(--mb-2);
 }
 
 .cell{
@@ -47,6 +45,9 @@
     transition: all 0.1s ease-in;
     font-size:130%;
 }
+.selectedCell{
+    background-color: var(--background-color);
+}
 
 table {
     border-collapse: collapse;
@@ -65,4 +66,9 @@ table tr:last-child td {
 }
 table tr td:last-child {
     border-right: 0;
+}
+
+.info__container{
+    text-align: center;
+    margin-top: var(--mb-2);
 }

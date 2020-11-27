@@ -118,10 +118,6 @@ class MatchField {
         $("#board").html(html)
     }
 
-    registerClickListener() {
-
-    }
-
     move(dir, row, col) {
         $.ajax({
             method: "POST",
@@ -135,9 +131,10 @@ class MatchField {
             }),
 
             success: (result) => {
-                const {matchField} = result
+                const {matchField, currentPlayer} = result
                 this.updateMatchField(matchField)
                 this.updateView()
+                this.updateCurrentPlayer(currentPlayer)
             }
         });
     }
@@ -145,11 +142,19 @@ class MatchField {
     updateMatchField(newFields) {
         this.fields = newFields
     }
+
+    updateCurrentPlayer(currentPlayer){
+        document.getElementById("infoPlayer").innerHTML = currentPlayer + ", it's your turn!"
+    }
 }
 
 $(document).on('click', '.cell',(function () {
     colA = this.parentElement.rowIndex
     rowA = this.cellIndex
+
+    // changes background color of selected cell:
+    $(".cell").removeClass('selectedCell');
+    $(this).addClass('selectedCell');
 }))
 
 
@@ -192,7 +197,7 @@ function loadJson() {
             matchField = new MatchField();
             matchField.updateMatchField(result.matchField);
             matchField.updateView();
-            matchField.registerClickListener();
+            matchField.updateCurrentPlayer(result.currentPlayer)
         }
     });
 }

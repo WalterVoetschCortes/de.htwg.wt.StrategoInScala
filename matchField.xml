@@ -1,4 +1,4 @@
-<matchField currentPlayerIndex="0" players="Alice Bob">
+<matchField currentPlayerIndex="0" players="Maradonna Messi">
     <field row="0" col="0" figName="2" figValue="2" colour="0"> </field>
     <field row="0" col="1" figName="3" figValue="3" colour="0"> </field>
     <field row="0" col="2" figName="4" figValue="4" colour="0"> </field>
@@ -34,19 +34,17 @@
     <field row="3" col="2" figName="5" figValue="5" colour="0"> </field>
     <field row="3" col="3" figName="B" figValue="11" colour="0"> </field>
     <field row="3" col="4" figName="7" figValue="7" colour="0"> </field>
-    <field row="3" col="5" figName="M" figValue="10" colour="0"> </field>
     <field row="3" col="6" figName="B" figValue="11" colour="0"> </field>
     <field row="3" col="7" figName="6" figValue="6" colour="0"> </field>
     <field row="3" col="8" figName="2" figValue="2" colour="0"> </field>
     <field row="3" col="9" figName="F" figValue="0" colour="0"> </field>
+    <field row="5" col="6" figName="5" figValue="5" colour="1"> </field>
     <field row="6" col="0" figName="2" figValue="2" colour="1"> </field>
     <field row="6" col="1" figName="3" figValue="3" colour="1"> </field>
     <field row="6" col="2" figName="4" figValue="4" colour="1"> </field>
     <field row="6" col="3" figName="7" figValue="7" colour="1"> </field>
-    <field row="6" col="4" figName="2" figValue="2" colour="1"> </field>
-    <field row="6" col="5" figName="5" figValue="5" colour="1"> </field>
-    <field row="6" col="6" figName="4" figValue="4" colour="1"> </field>
-    <field row="6" col="7" figName="3" figValue="3" colour="1"> </field>
+    <field row="6" col="6" figName="3" figValue="3" colour="1"> </field>
+    <field row="6" col="7" figName="M" figValue="10" colour="0"> </field>
     <field row="6" col="8" figName="2" figValue="2" colour="1"> </field>
     <field row="6" col="9" figName="8" figValue="8" colour="1"> </field>
     <field row="7" col="0" figName="B" figValue="11" colour="1"> </field>
@@ -55,7 +53,6 @@
     <field row="7" col="3" figName="6" figValue="6" colour="1"> </field>
     <field row="7" col="4" figName="6" figValue="6" colour="1"> </field>
     <field row="7" col="5" figName="4" figValue="4" colour="1"> </field>
-    <field row="7" col="6" figName="3" figValue="3" colour="1"> </field>
     <field row="7" col="7" figName="3" figValue="3" colour="1"> </field>
     <field row="7" col="8" figName="2" figValue="2" colour="1"> </field>
     <field row="7" col="9" figName="2" figValue="2" colour="1"> </field>

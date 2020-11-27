@@ -129,7 +129,8 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
               }
               obj
             }
-          )
+          ),
+          "currentPlayer" -> (gameController.playerList(gameController.currentPlayerIndex)).toString()
         ))
     }
   }
@@ -138,6 +139,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def gameToJson: Action[AnyContent] = Action {
     Ok(    Json.obj(
       "currentPlayerIndex" -> JsNumber(gameController.currentPlayerIndex),
+      "currentPlayer" -> (gameController.playerList(gameController.currentPlayerIndex)).toString(),
       "players" -> (gameController.playerList.head + " "+ gameController.playerList(1)),
       "matchField"-> Json.toJson(
         for{
