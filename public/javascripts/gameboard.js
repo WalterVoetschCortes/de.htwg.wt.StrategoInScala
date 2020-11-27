@@ -12,6 +12,7 @@ class MatchField {
 
     constructor() {
         this.fields = []
+        this.currentPlayerIndex = 0
     }
 
     createView () {
@@ -131,10 +132,10 @@ class MatchField {
             }),
 
             success: (result) => {
-                const {matchField, currentPlayer} = result
+                const {matchField, currentPlayer, currentPlayerIndex} = result
                 this.updateMatchField(matchField)
                 this.updateView()
-                this.updateCurrentPlayer(currentPlayer)
+                this.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
             }
         });
     }
@@ -143,20 +144,33 @@ class MatchField {
         this.fields = newFields
     }
 
-    updateCurrentPlayer(currentPlayer){
+    updateCurrentPlayer(currentPlayer, currentPlayerIndex){
+        this.currentPlayerIndex = currentPlayerIndex
         document.getElementById("infoPlayer").innerHTML = currentPlayer + ", it's your turn!"
     }
 }
 
-$(document).on('click', '.cell',(function () {
+$(document).on('click', '.cells_blue',(function () {
     colA = this.parentElement.rowIndex
     rowA = this.cellIndex
 
     // changes background color of selected cell:
-    $(".cell").removeClass('selectedCell');
-    $(this).addClass('selectedCell');
+    if(matchField.currentPlayerIndex === 0){
+        $(".cell").removeClass('selectedCell');
+        $(this).addClass('selectedCell');
+    }
 }))
 
+$(document).on('click', '.cells_red',(function () {
+    colA = this.parentElement.rowIndex
+    rowA = this.cellIndex
+
+    // changes background color of selected cell:
+    if(matchField.currentPlayerIndex === 1){
+        $(".cell").removeClass('selectedCell');
+        $(this).addClass('selectedCell');
+    }
+}))
 
 $(document).keydown(function(event){
     var key = event.which;
@@ -197,7 +211,7 @@ function loadJson() {
             matchField = new MatchField();
             matchField.updateMatchField(result.matchField);
             matchField.updateView();
-            matchField.updateCurrentPlayer(result.currentPlayer)
+            matchField.updateCurrentPlayer(result.currentPlayer, result.currentPlayerIndex)
         }
     });
 }

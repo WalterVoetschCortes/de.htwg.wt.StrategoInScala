@@ -128,6 +128,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
               obj
             }
           ),
+          "currentPlayerIndex" -> JsNumber(gameController.currentPlayerIndex),
           "currentPlayer" -> (gameController.playerList(gameController.currentPlayerIndex)).toString()
         ))
     }
