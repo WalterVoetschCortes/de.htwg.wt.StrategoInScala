@@ -73,18 +73,16 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
         val rowD = row + 1
         println(rowD)
         if(rowD >= 0 && rowD < gameController.getField.matrixSize){
-          if(gameController.getField.field(rowD, col).isSet){
+          if(gameController.getField.field(col, rowD).isSet){
             gameController.attack(col,row,col, rowD)
-            println("is set ")
           }
-          println(rowD + " works")
         }
         gameController.move(dir(0),col,row)
 
       } else if(dir(0) == 'l'){
         val rowD = row - 1
         if(rowD >= 0 && rowD < gameController.getField.matrixSize){
-          if(gameController.getField.field(rowD, col).isSet){
+          if(gameController.getField.field(col, rowD).isSet){
             gameController.attack(col,row,col, rowD)
           }
         }
@@ -93,7 +91,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
       }else if(dir(0) == 'd'){
         val colD = col + 1
         if(colD >= 0 && colD < gameController.getField.matrixSize){
-          if(gameController.getField.field(row, colD).isSet){
+          if(gameController.getField.field(colD, row).isSet){
             gameController.attack(col,row,colD, row)
           }
         }
@@ -102,7 +100,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
       } else if(dir(0) == 'u'){
         val colD = col - 1
         if(colD >= 0 && colD < gameController.getField.matrixSize){
-          if(gameController.getField.field(row, colD).isSet){
+          if(gameController.getField.field(colD, row).isSet){
             gameController.attack(col,row,colD, row)
           }
         }
