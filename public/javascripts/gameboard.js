@@ -1,11 +1,12 @@
-window.addEventListener("keydown", checkKeyPress, false)
 
-let size = 0
+let size = 10
 let colA = 0
 let rowA = 0
 let rowD = 0
 let colD = 0
-let attacking = false
+let dir = "d"
+
+
 
 class MatchField {
 
@@ -13,104 +14,98 @@ class MatchField {
         this.fields = []
     }
 
-    fill(newFields) {
-        this.fields = newFields
-    }
-
     createView () {
-        let html = ""
+        let html = "<table>"
+        let num = 0
         for(let row = 0; row < size; row++) {
             html += '<tr>'
             for(let col = 0; col < size; col++) {
-            if(this.fields.colour === 0) {
+                if(this.fields[num].colour === 0) {
                     html += '<td class="cells_blue cell">'
-                    switch (this.fields.figName) {
+                    switch (this.fields[num].figName) {
                         case 'F':
-                            html += '<span> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>'
+                            html += '<span><img class="piece" src="/assets/images/character-flag.svg" alt="F"/></span>'
                             break;
-
                         case 'B':
-                            html += '<span> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>'
+                            html += '<span> <img class="piece" src="/assets/images/character-bomb.svg" alt="B"/> </span>'
                             break;
-
                         case 'M':
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-marshal.svg" alt="M"/> </span>'
                             break;
                         case '1':
-                            html+='<span> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>'
+                            html+='<span> <img class="piece" src="/assets/images/character-spy.svg" alt="1"/> </span>'
                             break;
                         case '2':
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-scout.svg" alt="2"/> </span>'
                             break;
                         case '3':
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-miner.svg" alt="3"/> </span>'
                             break;
                         case '4':
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-sergeant.svg" alt="4"/> </span>'
                             break;
                         case '5':
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-lieutenant.svg" alt="5"/> </span>'
                             break;
                         case '6':
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-captain.svg" alt="6"/> </span>'
                             break;
                         case '7':
-                            html+= 'span> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-major.svg" alt="7"/> </span>'
                             break;
                         case "8":
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-colonel.svg" alt="8"/> </span>'
                             break;
                         case "9":
-                            html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>'
+                            html+= '<span> <img class="piece" src="/assets/images/character-general.svg" alt="9"/> </span>'
                             break;
-                        }
-                        html += '</td>'
-            } else if (this.fields.colour === 1) {
-                html += '<td class="cells_red cell">'
-                switch (this.fields.figName) {
-                    case 'F':
-                        html += '<span> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>'
-                        break;
-
-                    case 'B':
-                        html += '<span> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>'
-                        break;
-
-                    case 'M':
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>'
-                        break;
-                    case '1':
-                        html+='<span> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>'
-                        break;
-                    case '2':
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>'
-                        break;
-                    case '3':
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>'
-                        break;
-                    case '4':
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>'
-                        break;
-                    case '5':
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>'
-                        break;
-                    case '6':
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>'
-                        break;
-                    case '7':
-                        html+= 'span> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>'
-                        break;
-                    case "8":
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>'
-                        break;
-                    case "9":
-                        html+= '<span> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>'
-                        break;
-                }
-                html += '</td>'
+                    }
+                    html += '</td>'
+                } else if (this.fields[num].colour === 1) {
+                    html += '<td class="cells_red cell">'
+                    switch (this.fields[num].figName) {
+                        case 'F':
+                            html += '<span><img class="piece" src="/assets/images/character-flag.svg" alt="F"/></span>'
+                            break;
+                        case 'B':
+                            html += '<span> <img class="piece" src="/assets/images/character-bomb.svg" alt="B"/> </span>'
+                            break;
+                        case 'M':
+                            html+= '<span> <img class="piece" src="/assets/images/character-marshal.svg" alt="M"/> </span>'
+                            break;
+                        case '1':
+                            html+='<span> <img class="piece" src="/assets/images/character-spy.svg" alt="1"/> </span>'
+                            break;
+                        case '2':
+                            html+= '<span> <img class="piece" src="/assets/images/character-scout.svg" alt="2"/> </span>'
+                            break;
+                        case '3':
+                            html+= '<span> <img class="piece" src="/assets/images/character-miner.svg" alt="3"/> </span>'
+                            break;
+                        case '4':
+                            html+= '<span> <img class="piece" src="/assets/images/character-sergeant.svg" alt="4"/> </span>'
+                            break;
+                        case '5':
+                            html+= '<span> <img class="piece" src="/assets/images/character-lieutenant.svg" alt="5"/> </span>'
+                            break;
+                        case '6':
+                            html+= '<span> <img class="piece" src="/assets/images/character-captain.svg" alt="6"/> </span>'
+                            break;
+                        case '7':
+                            html+= '<span> <img class="piece" src="/assets/images/character-major.svg" alt="7"/> </span>'
+                            break;
+                        case "8":
+                            html+= '<span> <img class="piece" src="/assets/images/character-colonel.svg" alt="8"/> </span>'
+                            break;
+                        case "9":
+                            html+= '<span> <img class="piece" src="/assets/images/character-general.svg" alt="9"/> </span>'
+                            break;
+                    }
+                    html += '</td>'
                 } else {
-                html += '<td class="cells__green cell"> <span class="cell__empty"> </span> </td>'
+                    html += '<td class="cells__green cell"> <span class="cell__empty"> </span> </td>'
                 }
+                num++;
             }
         html += '</tr>'
         }
@@ -123,53 +118,69 @@ class MatchField {
         $("#board").html(html)
     }
 
-    /**
-     * registers the click listener for every single cell
-     */
     registerClickListener() {
-        for (let grid = 0; grid < this.grids.length; grid++) {
-            for (let row = 0; row < this.grids[grid].length; row++) {
-                for (let column = 0; column < this.grids[grid][row].length; column++) {
-                    if (this.grids[grid][row][column] === '-') {
-                        $(document).on('click', '#notSet' + grid + '-' + row + '-' + column, () => {
-                            this.move(grid, row, column)
-                        })
-                    }
-                }
+
+    }
+
+    move(dir, row, col) {
+        $.ajax({
+            method: "POST",
+            url: "/move",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "row": row,
+                "col": col,
+                "dir": dir
+            }),
+
+            success: (result) => {
+                const {matchField} = result
+                this.updateMatchField(matchField)
+                this.updateView()
             }
-        }
+        });
     }
 
+    updateMatchField(newFields) {
+        this.fields = newFields
+    }
 }
 
-$('.cell').click(function () {
-    if (attacking === false) {
-        colA = this.parentElement.rowIndex
-        rowA = this.cellIndex
-    } else {
-        colD = this.parentElement.rowIndex
-        rowD = this.cellIndex
-        window.location = "/attack/" + colA + "/" + rowA + "/" + colD + "/" + rowD
-        attacking = false
+$(document).on('click', '.cell',(function () {
+    colA = this.parentElement.rowIndex
+    rowA = this.cellIndex
+}))
+
+
+$(document).keydown(function(event){
+    var key = event.which;
+    switch(key) {
+        case 37:
+            dir = "l"
+            console.log("left")
+            // Key left.
+            break;
+        case 38:
+            dir = "u"
+            console.log("up")
+            // Key up.
+            break;
+        case 39:
+            dir = "r"
+            console.log("right")
+            // Key right.
+            break;
+        case 40:
+            dir = "d"
+            console.log("down")
+            // Key down.
+            break;
+        case 65:
+            attacking = !attacking
     }
-})
-
-
-function checkKeyPress(key) {
-    attacking = key.keyCode === "65";
-    if (key.keyCode === "37") {
-        dir = "l"
-    } else if (key.keyCode === "38") {
-        dir = "u"
-    } else if (key.keyCode === "39") {
-        dir = "r"
-    } else if (key.keyCode === "40") {
-        dir = "d"
-    }
-    window.location = "/move/" + dir + "/" + colA + "/" + rowA
-}
-
-
+    matchField.move(dir, rowA, colA)
+});
 
 function loadJson() {
     $.ajax({
@@ -179,9 +190,9 @@ function loadJson() {
 
         success: function (result) {
             matchField = new MatchField();
-            matchField.fill(result.matchField);
-            updateMatchField(matchField);
-            registerClickListener();
+            matchField.updateMatchField(result.matchField);
+            matchField.updateView();
+            matchField.registerClickListener();
         }
     });
 }

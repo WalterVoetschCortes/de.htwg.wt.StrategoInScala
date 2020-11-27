@@ -46,8 +46,6 @@ function checkInputs() {
         return;
     }
 
-
-
     location.href='/setPlayers/' + player1Value + '/' + player2Value;
 
 }

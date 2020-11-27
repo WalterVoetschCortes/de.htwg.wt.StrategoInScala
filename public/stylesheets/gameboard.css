@@ -1,6 +1,8 @@
 .gameboard__container{
     display: flex;
     justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .gameboard{

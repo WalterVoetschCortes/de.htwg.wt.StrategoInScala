@@ -22,7 +22,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                             Game</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/newGame">New Game</a>
+                            <a class="dropdown-item" href="/menu">New Game</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/load">Load</a>
                             <div class="dropdown-divider"></div>
@@ -49,108 +49,11 @@
     <main class ="l-main">
             <!-- ===== Game ===== -->
         <section class="home bd-grid" id="home">
-            <div class="gameboard__container">
-                <table class="gameboard" id="board">
-                @for(row <- 0 until controller.getSize) {
-                    <tr>
-                    @for(col <- 0 until controller.getSize) {
-                        @if(controller.getField.field(row, col).isSet) {
-                            @if(controller.getField.field(row, col).colour.get.value == 0) {
-                                <td class="cells_blue cell">
-                                @controller.getField.field(row, col).character.get.figure.name match {
-                                    case "F" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>
-                                    }
-                                    case "B" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>
-                                    }
-                                    case "M" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>
-                                    }
-                                    case "1" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>
-                                    }
-                                    case "2" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>
-                                    }
-                                    case "3" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>
-                                    }
-                                    case "4" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>
-                                    }
-                                    case "5" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>
-                                    }
-                                    case "6" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>
-                                    }
-                                    case "7" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>
-                                    }
-                                    case "8" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>
-                                    }
-                                    case "9" => {
-                                        <span> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>
-                                    }
-                                    case _ => {}
-                                }
-                                </td>
-                            } else if (controller.getField.field(row, col).colour.get.value == 1) {
-                            <td class="cells_red cell">
-                            @controller.getField.field(row, col).character.get.figure.name match {
-                                case "F" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-flag.svg")" alt="1"/> </span>
-                                }
-                                case "B" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-bomb.svg")" alt="1"/> </span>
-                                }
-                                case "M" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-marshal.svg")" alt="1"/> </span>
-                                }
-                                case "1" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-spy.svg")" alt="1"/> </span>
-                                }
-                                case "2" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-scout.svg")" alt="1"/> </span>
-                                }
-                                case "3" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-miner.svg")" alt="1"/> </span>
-                                }
-                                case "4" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-sergeant.svg")" alt="1"/> </span>
-                                }
-                                case "5" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-lieutenant.svg")" alt="1"/> </span>
-                                }
-                                case "6" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-captain.svg")" alt="1"/> </span>
-                                }
-                                case "7" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-major.svg")" alt="1"/> </span>
-                                }
-                                case "8" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-colonel.svg")" alt="1"/> </span>
-                                }
-                                case "9" => {
-                                    <span> <img class="piece" src="@routes.Assets.versioned("images/character-general.svg")" alt="1"/> </span>
-                                }
-                                case _ => {}
-                            }
-                            </td>
-                            }
-                        } else {
-                            <td class="cells__green cell">
-                                <span class="cell__empty"> </span>
-                            </td>
-                        }
-                    }
-                    </tr>
-                }
-                </table>
+            <div class="gameboard__container" id="board">
             </div>
         </section>
     </main>
+
+    <script src="@routes.Assets.versioned("javascripts/gameboard.js")"></script>
 
 }

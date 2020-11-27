@@ -4,7 +4,7 @@
     <!-- ===== Menu (using bootstrap) ===== -->
     <div class="menu">
         <div class="form-newGame">
-            <form id="form">
+            <form action="/players" method="get" id="form">
 
                 <img class="menuLogo" src="@routes.Assets.versioned("images/logo.png")" alt="Logo">
 
@@ -22,7 +22,7 @@
                     <small>Error message</small>
                 </div>
 
-                <button class="menuButton newGameButton ">New Game</button>
+                <button type="submit" class="menuButton newGameButton ">New Game</button>
             </form>
 
             <p class="or">---- or ----</p>

@@ -4,7 +4,7 @@ import de.htwg.se.stratego.Stratego
 import de.htwg.se.stratego.controller.controllerComponent.ControllerInterface
 import de.htwg.se.stratego.model.matchFieldComponent.matchFieldBaseImpl.{Field, Matrix}
 import javax.inject._
-import play.api.libs.json.{JsNumber, Json}
+import play.api.libs.json.{JsNumber, JsValue, Json}
 import play.api.mvc._
 
 
@@ -13,9 +13,6 @@ import play.api.mvc._
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   val gameController: ControllerInterface = Stratego.controller
-  val currentPlayerIndex: Int = Stratego.controller.currentPlayerIndex
-  val players: String = Stratego.controller.playerList.head + " "+ Stratego.controller.playerList(1)
-  val field: Matrix[Field] = Stratego.controller.getField
 
   def matchFieldText: String = {
     gameController.matchFieldToString.replaceAll(s"\\033\\[.{1,5}m","")
@@ -26,15 +23,11 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def stratego: Action[AnyContent] = Action {
+    gameToJson
     Ok(views.html.matchfield(gameController))
   }
 
   def menu: Action[AnyContent] = Action {
-    Ok(views.html.menu(gameController))
-  }
-
-  def newGame(): Action[AnyContent] = Action {
-    Stratego.tui.processInputLine("n")
     Ok(views.html.menu(gameController))
   }
 
@@ -59,16 +52,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def setPlayers(player1: String, player2: String): Action[AnyContent] = Action {
-    Stratego.tui.processInputLine("n")
-    Stratego.tui.processInputLine(player1 + " " + player2)
-    Stratego.tui.processInputLine("i")
-    Ok(views.html.matchfield(gameController))
-  }
-
-  def initMatchfield(): Action[AnyContent] = Action {
-    Stratego.tui.processInputLine("i")
-    Ok(matchFieldText)
-
+    gameController.createEmptyMatchfield(gameController.getSize)
+    gameController.setPlayers(player1 + " " + player2)
+    gameController.initMatchfield
+    Redirect(controllers.routes.HomeController.stratego())
   }
 
   def setFigure(row: String, col: String, figure: String): Action[AnyContent] = Action {
@@ -76,35 +63,96 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(matchFieldText)
   }
 
-  def move(dir: String, row: String, col: String): Action[AnyContent] = Action {
-    Stratego.tui.processInputLine("m " + dir + row + col)
-    Ok(views.html.matchfield(gameController))
+  def move: Action[JsValue] = Action(parse.json) {
+    moveRequest: Request[JsValue] => {
+      val dir = (moveRequest.body \ "dir").as[String].toCharArray
+      val row = (moveRequest.body \ "row").as[Int]
+      val col = (moveRequest.body \ "col").as[Int]
 
+      if(dir(0) == 'r'){
+        val rowD = row + 1
+        println(rowD)
+        if(rowD >= 0 && rowD < gameController.getField.matrixSize){
+          if(gameController.getField.field(rowD, col).isSet){
+            gameController.attack(col,row,col, rowD)
+            println("is set ")
+          }
+          println(rowD + " works")
+        }
+        gameController.move(dir(0),col,row)
+
+      } else if(dir(0) == 'l'){
+        val rowD = row - 1
+        if(rowD >= 0 && rowD < gameController.getField.matrixSize){
+          if(gameController.getField.field(rowD, col).isSet){
+            gameController.attack(col,row,col, rowD)
+          }
+        }
+        gameController.move(dir(0),col,row)
+
+      }else if(dir(0) == 'd'){
+        val colD = col + 1
+        if(colD >= 0 && colD < gameController.getField.matrixSize){
+          if(gameController.getField.field(row, colD).isSet){
+            gameController.attack(col,row,colD, row)
+          }
+        }
+        gameController.move(dir(0),col,row)
+
+      } else if(dir(0) == 'u'){
+        val colD = col - 1
+        if(colD >= 0 && colD < gameController.getField.matrixSize){
+          if(gameController.getField.field(row, colD).isSet){
+            gameController.attack(col,row,colD, row)
+          }
+        }
+        gameController.move(dir(0),col,row)
+      }
+
+        Ok(Json.obj(
+          "matchField"-> Json.toJson(
+            for{
+              row <- 0 until gameController.getField.matrixSize
+              col <- 0 until gameController.getField.matrixSize
+            } yield {
+              var obj = Json.obj(
+                "row" -> row,
+                "col" -> col
+              )
+              if(gameController.getField.field(row,col).isSet) {
+                obj = obj.++(Json.obj(
+                  "figName" -> gameController.getField.field(row, col).character.get.figure.name,
+                  "figValue" -> gameController.getField.field(row, col).character.get.figure.value,
+                  "colour" -> gameController.getField.field(row, col).colour.get.value
+                )
+                )
+              }
+              obj
+            }
+          )
+        ))
+    }
   }
 
-  def attack(rowA: String, colA: String, rowD: String, colD: String): Action[AnyContent] = Action {
-    Ok(Stratego.tui.processInputLine("a " + rowA + colA + rowD + colD) + "\n" + matchFieldText)
-    Ok(views.html.matchfield(gameController))
-  }
 
   def gameToJson: Action[AnyContent] = Action {
     Ok(    Json.obj(
-      "currentPlayerIndex" -> JsNumber(currentPlayerIndex),
-      "players" -> players,
+      "currentPlayerIndex" -> JsNumber(gameController.currentPlayerIndex),
+      "players" -> (gameController.playerList.head + " "+ gameController.playerList(1)),
       "matchField"-> Json.toJson(
         for{
-          row <- 0 until field.matrixSize
-          col <- 0 until field.matrixSize
+          row <- 0 until gameController.getField.matrixSize
+          col <- 0 until gameController.getField.matrixSize
         } yield {
           var obj = Json.obj(
             "row" -> row,
             "col" -> col
           )
-          if(field.field(row,col).isSet) {
+          if(gameController.getField.field(row,col).isSet) {
             obj = obj.++(Json.obj(
-              "figName" -> field.field(row, col).character.get.figure.name,
-              "figValue" -> field.field(row, col).character.get.figure.value,
-              "colour" -> field.field(row, col).colour.get.value
+              "figName" -> gameController.getField.field(row, col).character.get.figure.name,
+              "figValue" -> gameController.getField.field(row, col).character.get.figure.value,
+              "colour" -> gameController.getField.field(row, col).colour.get.value
             )
             )
           }

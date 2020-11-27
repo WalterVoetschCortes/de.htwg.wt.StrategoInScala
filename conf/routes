@@ -10,8 +10,6 @@ GET     /stratego                           controllers.HomeController.stratego
 
 GET     /menu                               controllers.HomeController.menu
 
-GET     /newGame                            controllers.HomeController.newGame
-
 GET     /load                               controllers.HomeController.load
 
 GET     /save                               controllers.HomeController.save
@@ -20,15 +18,13 @@ GET     /undo                               controllers.HomeController.undo
 
 GET     /redo                               controllers.HomeController.redo
 
-GET     /setPlayers/:player1/:player2       controllers.HomeController.setPlayers(player1: String, player2: String)
+GET     /players                            controllers.HomeController.setPlayers(player1: String, player2: String)
 
-GET     /initMatchfield                     controllers.HomeController.initMatchfield
+GET     /setPlayers/:player1/:player2       controllers.HomeController.setPlayers(player1: String, player2: String)
 
 GET     /setFigure/:row/:col/:figure        controllers.HomeController.setFigure(row: String, col: String, figure: String)
 
-GET     /move/:dir/:row/:col                controllers.HomeController.move(dir: String, row: String, col: String)
-
-GET     /attack/:rowA/:colA/:rowD/:colD     controllers.HomeController.attack(rowA: String, colA: String, rowD: String, colD: String)
+POST    /move                               controllers.HomeController.move
 
 GET     /json                               controllers.HomeController.gameToJson
 
