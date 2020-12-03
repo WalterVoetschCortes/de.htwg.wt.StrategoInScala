@@ -214,7 +214,39 @@ function loadJson() {
     });
 }
 
+function connectWebSocket(){
+    var webSocket = new WebSocket("ws://localhost:9000/websocket");
+
+    webSocket.onopen = () => {
+        console.log("Connected to WebSocket")
+    };
+
+    webSocket.onclose = () => function () {
+        console.log('Connection with Websocket Closed!');
+    };
+
+    webSocket.onerror = function (error) {
+        console.log('Error in Websocket Occured: ' + error);
+    };
+
+    webSocket.onmessage = function (e) {
+        console.log("message");
+        if (typeof e.data === "string") {
+            let json = JSON.parse(e.data);
+            let fields = json.matchField;
+            let currentPlayerIndex = json.currentPlayerIndex;
+            console.log("fields: " + fields)
+            console.log("playerIndex: " + currentPlayerIndex)
+
+            matchField.updateMatchField(fields);
+            matchField.updateView();
+            matchField.updateCurrentPlayer(currentPlayerIndex, currentPlayerIndex)
+        }
+    }
+}
+
 $( document ).ready(function() {
     console.log( "Document is ready, filling matchfield" );
     loadJson();
+    connectWebSocket();
 });

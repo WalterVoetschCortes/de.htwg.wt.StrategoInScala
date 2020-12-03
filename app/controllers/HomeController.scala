@@ -1,16 +1,21 @@
 package controllers
 
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import de.htwg.se.stratego.Stratego
-import de.htwg.se.stratego.controller.controllerComponent.ControllerInterface
+import de.htwg.se.stratego.controller.controllerComponent.{ControllerInterface, FieldChanged, PlayerSwitch}
 import de.htwg.se.stratego.model.matchFieldComponent.matchFieldBaseImpl.{Field, Matrix}
 import javax.inject._
 import play.api.libs.json.{JsNumber, JsValue, Json}
+import play.api.libs.streams.ActorFlow
 import play.api.mvc._
+import akka.stream.Materializer
+
+import scala.swing.Reactor
 
 
 
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
 
   val gameController: ControllerInterface = Stratego.controller
 
@@ -160,5 +165,83 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
         }
       )
     ))
+  }
+
+  def socket: WebSocket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      println("Connect received")
+      StrategoWebSocketActorFactory.create(out)
+    }
+  }
+
+  object StrategoWebSocketActorFactory{
+    def create(out: ActorRef): Props = {
+      Props(new StrategoWebSocketActor(out))
+    }
+  }
+
+  class StrategoWebSocketActor(out: ActorRef) extends Actor with Reactor{
+    override def receive: Receive = {
+      case msg: String =>
+        out ! Json.obj(
+          "currentPlayerIndex" -> JsNumber(gameController.currentPlayerIndex),
+          "currentPlayer" -> (gameController.playerList(gameController.currentPlayerIndex)).toString(),
+          "players" -> (gameController.playerList.head + " "+ gameController.playerList(1)),
+          "matchField"-> Json.toJson(
+            for{
+              row <- 0 until gameController.getField.matrixSize
+              col <- 0 until gameController.getField.matrixSize
+            } yield {
+              var obj = Json.obj(
+                "row" -> row,
+                "col" -> col
+              )
+              if(gameController.getField.field(row,col).isSet) {
+                obj = obj.++(Json.obj(
+                  "figName" -> gameController.getField.field(row, col).character.get.figure.name,
+                  "figValue" -> gameController.getField.field(row, col).character.get.figure.value,
+                  "colour" -> gameController.getField.field(row, col).colour.get.value
+                )
+                )
+              }
+              obj
+            }
+          )
+        ).toString()
+    }
+
+    reactions += {
+      case event: FieldChanged => sendJsonToClient()
+      case event: PlayerSwitch => sendJsonToClient()
+    }
+
+    def sendJsonToClient(): Unit = {
+      println("Received event from Controller")
+      out ! Json.obj(
+        "currentPlayerIndex" -> JsNumber(gameController.currentPlayerIndex),
+        "currentPlayer" -> (gameController.playerList(gameController.currentPlayerIndex)).toString(),
+        "players" -> (gameController.playerList.head + " "+ gameController.playerList(1)),
+        "matchField"-> Json.toJson(
+          for{
+            row <- 0 until gameController.getField.matrixSize
+            col <- 0 until gameController.getField.matrixSize
+          } yield {
+            var obj = Json.obj(
+              "row" -> row,
+              "col" -> col
+            )
+            if(gameController.getField.field(row,col).isSet) {
+              obj = obj.++(Json.obj(
+                "figName" -> gameController.getField.field(row, col).character.get.figure.name,
+                "figValue" -> gameController.getField.field(row, col).character.get.figure.value,
+                "colour" -> gameController.getField.field(row, col).colour.get.value
+              )
+              )
+            }
+            obj
+          }
+        )
+      ).toString()
+    }
   }
 }
