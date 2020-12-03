@@ -71,7 +71,6 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
 
       if(dir(0) == 'r'){
         val rowD = row + 1
-        println(rowD)
         if(rowD >= 0 && rowD < gameController.getField.matrixSize){
           if(gameController.getField.field(col, rowD).isSet){
             gameController.attack(col,row,col, rowD)

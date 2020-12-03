@@ -2,8 +2,6 @@
 let size = 10
 let colA = 0
 let rowA = 0
-let rowD = 0
-let colD = 0
 let dir = "d"
 
 
