@@ -235,12 +235,13 @@ function connectWebSocket(){
             let json = JSON.parse(e.data);
             let fields = json.matchField;
             let currentPlayerIndex = json.currentPlayerIndex;
+            let currentPlayer = json.currentPlayer;
             console.log("fields: " + fields)
             console.log("playerIndex: " + currentPlayerIndex)
 
             matchField.updateMatchField(fields);
             matchField.updateView();
-            matchField.updateCurrentPlayer(currentPlayerIndex, currentPlayerIndex)
+            matchField.updateCurrentPlayer(currentPlayer, currentPlayerIndex)
         }
     }
 }
