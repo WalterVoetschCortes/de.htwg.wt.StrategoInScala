@@ -181,6 +181,8 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
   }
 
   class StrategoWebSocketActor(out: ActorRef) extends Actor with Reactor{
+    listenTo(gameController)
+
     override def receive: Receive = {
       case msg: String =>
         out ! Json.obj(
