@@ -12,109 +12,125 @@ class MatchField {
         this.currentPlayerIndex = 0
     }
 
-    createView () {
-        let html = "<table>"
+    updateView () {
         let num = 0
         for(let row = 0; row < size; row++) {
-            html += '<tr>'
             for(let col = 0; col < size; col++) {
                 if(this.fields[num].colour === 0) {
-                    html += '<td class="cells_blue cell">'
+                    let td = document.getElementById("row"+ row + "col" + col)
+                    td.className = "cell cells_blue"
                     switch (this.fields[num].figName) {
                         case 'F':
-                            html += '<span><img class="piece" src="/assets/images/character-flag.svg" alt="F"/></span>'
+                            td.firstChild.src = "/assets/images/character-flag.svg"
+                            td.firstChild.alt = "F"
                             break;
                         case 'B':
-                            html += '<span> <img class="piece" src="/assets/images/character-bomb.svg" alt="B"/> </span>'
+                            td.firstChild.src = "/assets/images/character-bomb.svg"
+                            td.firstChild.alt = "B"
                             break;
                         case 'M':
-                            html+= '<span> <img class="piece" src="/assets/images/character-marshal.svg" alt="M"/> </span>'
+                            td.firstChild.src = "/assets/images/character-marshal.svg"
+                            td.firstChild.alt = "M"
                             break;
                         case '1':
-                            html+='<span> <img class="piece" src="/assets/images/character-spy.svg" alt="1"/> </span>'
+                            td.firstChild.src = "/assets/images/character-spy.svg"
+                            td.firstChild.alt = "1"
                             break;
                         case '2':
-                            html+= '<span> <img class="piece" src="/assets/images/character-scout.svg" alt="2"/> </span>'
+                            td.firstChild.src = "/assets/images/character-scout.svg"
+                            td.firstChild.alt = "2"
                             break;
                         case '3':
-                            html+= '<span> <img class="piece" src="/assets/images/character-miner.svg" alt="3"/> </span>'
+                            td.firstChild.src = "/assets/images/character-miner.svg"
+                            td.firstChild.alt = "3"
                             break;
                         case '4':
-                            html+= '<span> <img class="piece" src="/assets/images/character-sergeant.svg" alt="4"/> </span>'
+                            td.firstChild.src = "/assets/images/character-sergeant.svg"
+                            td.firstChild.alt = "4"
                             break;
                         case '5':
-                            html+= '<span> <img class="piece" src="/assets/images/character-lieutenant.svg" alt="5"/> </span>'
+                            td.firstChild.src = "/assets/images/character-lieutenant.svg"
+                            td.firstChild.alt = "5"
                             break;
                         case '6':
-                            html+= '<span> <img class="piece" src="/assets/images/character-captain.svg" alt="6"/> </span>'
+                            td.firstChild.src = "/assets/images/character-captain.svg"
+                            td.firstChild.alt = "6"
                             break;
                         case '7':
-                            html+= '<span> <img class="piece" src="/assets/images/character-major.svg" alt="7"/> </span>'
+                            td.firstChild.src = "/assets/images/character-major.svg"
+                            td.firstChild.alt = "7"
                             break;
                         case "8":
-                            html+= '<span> <img class="piece" src="/assets/images/character-colonel.svg" alt="8"/> </span>'
+                            td.firstChild.src = "/assets/images/character-colonel.svg"
+                            td.firstChild.alt = "8"
                             break;
                         case "9":
-                            html+= '<span> <img class="piece" src="/assets/images/character-general.svg" alt="9"/> </span>'
+                            td.firstChild.src = "/assets/images/character-general.svg"
+                            td.firstChild.alt = "9"
                             break;
                     }
-                    html += '</td>'
                 } else if (this.fields[num].colour === 1) {
-                    html += '<td class="cells_red cell">'
+                    let td = document.getElementById("row"+ row + "col" + col)
+                    td.className = "cell cells_red"
                     switch (this.fields[num].figName) {
                         case 'F':
-                            html += '<span><img class="piece" src="/assets/images/character-flag.svg" alt="F"/></span>'
+                            td.firstChild.src = "/assets/images/character-flag.svg"
+                            td.firstChild.alt = "F"
                             break;
                         case 'B':
-                            html += '<span> <img class="piece" src="/assets/images/character-bomb.svg" alt="B"/> </span>'
+                            td.firstChild.src = "/assets/images/character-bomb.svg"
+                            td.firstChild.alt = "B"
                             break;
                         case 'M':
-                            html+= '<span> <img class="piece" src="/assets/images/character-marshal.svg" alt="M"/> </span>'
+                            td.firstChild.src = "/assets/images/character-marshal.svg"
+                            td.firstChild.alt = "M"
                             break;
                         case '1':
-                            html+='<span> <img class="piece" src="/assets/images/character-spy.svg" alt="1"/> </span>'
+                            td.firstChild.src = "/assets/images/character-spy.svg"
+                            td.firstChild.alt = "1"
                             break;
                         case '2':
-                            html+= '<span> <img class="piece" src="/assets/images/character-scout.svg" alt="2"/> </span>'
+                            td.firstChild.src = "/assets/images/character-scout.svg"
+                            td.firstChild.alt = "2"
                             break;
                         case '3':
-                            html+= '<span> <img class="piece" src="/assets/images/character-miner.svg" alt="3"/> </span>'
+                            td.firstChild.src = "/assets/images/character-miner.svg"
+                            td.firstChild.alt = "3"
                             break;
                         case '4':
-                            html+= '<span> <img class="piece" src="/assets/images/character-sergeant.svg" alt="4"/> </span>'
+                            td.firstChild.src = "/assets/images/character-sergeant.svg"
+                            td.firstChild.alt = "4"
                             break;
                         case '5':
-                            html+= '<span> <img class="piece" src="/assets/images/character-lieutenant.svg" alt="5"/> </span>'
+                            td.firstChild.src = "/assets/images/character-lieutenant.svg"
+                            td.firstChild.alt = "5"
                             break;
                         case '6':
-                            html+= '<span> <img class="piece" src="/assets/images/character-captain.svg" alt="6"/> </span>'
+                            td.firstChild.src = "/assets/images/character-captain.svg"
+                            td.firstChild.alt = "6"
                             break;
                         case '7':
-                            html+= '<span> <img class="piece" src="/assets/images/character-major.svg" alt="7"/> </span>'
+                            td.firstChild.src = "/assets/images/character-major.svg"
+                            td.firstChild.alt = "7"
                             break;
                         case "8":
-                            html+= '<span> <img class="piece" src="/assets/images/character-colonel.svg" alt="8"/> </span>'
+                            td.firstChild.src = "/assets/images/character-colonel.svg"
+                            td.firstChild.alt = "8"
                             break;
                         case "9":
-                            html+= '<span> <img class="piece" src="/assets/images/character-general.svg" alt="9"/> </span>'
+                            td.firstChild.src = "/assets/images/character-general.svg"
+                            td.firstChild.alt = "9"
                             break;
                     }
-                    html += '</td>'
                 } else {
-                    html += '<td class="cells__green cell"> <span class="cell__empty"> </span> </td>'
+                    let td = document.getElementById("row"+ row + "col" + col)
+                    td.className = "cell cells_green" //empty cell
                 }
                 num++;
             }
-        html += '</tr>'
         }
-        html += '</table>'
-        return html
     }
 
-    updateView() {
-        const html = this.createView()
-        $("#board").html(html)
-    }
 
     move(dir, row, col) {
         $.ajax({
