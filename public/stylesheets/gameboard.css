@@ -1,4 +1,4 @@
-.game__conatiner{
+.game__container{
     margin-top: calc(var(--header-height) + 1rem);
 }
 

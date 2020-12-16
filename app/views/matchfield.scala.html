@@ -3,6 +3,9 @@
 
 @main("Stratego") {
 
+    <script src="@routes.Assets.versioned("javascripts/vue.js")" ></script>
+    <script src="@routes.Assets.versioned("javascripts/strategoVue.js")" ></script>
+
     <!-- ===== HEADER ===== -->
     <header class="l-header">
         <nav class="navbar navbar-expand-sm bd-grid">
@@ -49,12 +52,9 @@
     <main class ="l-main">
             <!-- ===== Game ===== -->
         <section class="home bd-grid" id="home">
-            <div class="game__conatiner">
-                <div class="gameboard__container" id="board">
-                </div>
-                <div class="info__container">
-                    <p class="info__turn" id="infoPlayer"></p>
-                </div>
+            <div class="game__container" id="stratego-game">
+                <stratego-field></stratego-field>
+                <stratego-info></stratego-info>
             </div>
         </section>
     </main>

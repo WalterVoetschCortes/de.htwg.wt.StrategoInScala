@@ -5,7 +5,6 @@ let rowA = 0
 let dir = "d"
 
 
-
 class MatchField {
 
     constructor() {
