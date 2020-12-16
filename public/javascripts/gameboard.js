@@ -18,113 +18,142 @@ class MatchField {
             for(let col = 0; col < size; col++) {
                 if(this.fields[num].colour === 0) {
                     let td = document.getElementById("row"+ row + "col" + col)
+                    let img = $("." + "row"+ row + "col" + col)
                     td.className = "cell cells_blue"
                     switch (this.fields[num].figName) {
                         case 'F':
-                            td.firstChild.src = "/assets/images/character-flag.svg"
-                            td.firstChild.alt = "F"
+                            img
+                                .attr('src',"/assets/images/character-flag.svg")
+                                .attr('alt',"F")
                             break;
                         case 'B':
-                            td.firstChild.src = "/assets/images/character-bomb.svg"
-                            td.firstChild.alt = "B"
+                            img
+                                .attr('src',"/assets/images/character-bomb.svg")
+                                .attr('alt',"B")
                             break;
                         case 'M':
-                            td.firstChild.src = "/assets/images/character-marshal.svg"
-                            td.firstChild.alt = "M"
+                            img
+                                .attr('src',"/assets/images/character-marshal.svg")
+                                .attr('alt',"M")
                             break;
                         case '1':
-                            td.firstChild.src = "/assets/images/character-spy.svg"
-                            td.firstChild.alt = "1"
+                            img
+                                .attr('src',"/assets/images/character-spy.svg")
+                                .attr('alt',"1")
                             break;
                         case '2':
-                            td.firstChild.src = "/assets/images/character-scout.svg"
-                            td.firstChild.alt = "2"
+                            img
+                                .attr('src',"/assets/images/character-scout.svg")
+                                .attr('alt',"2")
                             break;
                         case '3':
-                            td.firstChild.src = "/assets/images/character-miner.svg"
-                            td.firstChild.alt = "3"
+                            img
+                                .attr('src',"/assets/images/character-miner.svg")
+                                .attr('alt',"3")
                             break;
                         case '4':
-                            td.firstChild.src = "/assets/images/character-sergeant.svg"
-                            td.firstChild.alt = "4"
+                            img
+                                .attr('src',"/assets/images/character-sergeant.svg")
+                                .attr('alt',"4")
                             break;
                         case '5':
-                            td.firstChild.src = "/assets/images/character-lieutenant.svg"
-                            td.firstChild.alt = "5"
+                            img
+                                .attr('src',"/assets/images/character-lieutenant.svg")
+                                .attr('alt',"5")
                             break;
                         case '6':
-                            td.firstChild.src = "/assets/images/character-captain.svg"
-                            td.firstChild.alt = "6"
+                            img
+                                .attr('src',"/assets/images/character-captain.svg")
+                                .attr('alt',"6")
                             break;
                         case '7':
-                            td.firstChild.src = "/assets/images/character-major.svg"
-                            td.firstChild.alt = "7"
+                            img
+                                .attr('src',"/assets/images/character-major.svg")
+                                .attr('alt',"7")
                             break;
                         case "8":
-                            td.firstChild.src = "/assets/images/character-colonel.svg"
-                            td.firstChild.alt = "8"
+                            img
+                                .attr('src',"/assets/images/character-colonel.svg")
+                                .attr('alt',"8")
                             break;
                         case "9":
-                            td.firstChild.src = "/assets/images/character-general.svg"
-                            td.firstChild.alt = "9"
+                            img
+                                .attr('src',"/assets/images/character-general.svg")
+                                .attr('alt',"9")
                             break;
                     }
                 } else if (this.fields[num].colour === 1) {
                     let td = document.getElementById("row"+ row + "col" + col)
+                    let img = $("." + "row"+ row + "col" + col)
                     td.className = "cell cells_red"
                     switch (this.fields[num].figName) {
                         case 'F':
-                            td.firstChild.src = "/assets/images/character-flag.svg"
-                            td.firstChild.alt = "F"
+                            img
+                                .attr('src',"/assets/images/character-flag.svg")
+                                .attr('alt',"F")
                             break;
                         case 'B':
-                            td.firstChild.src = "/assets/images/character-bomb.svg"
-                            td.firstChild.alt = "B"
+                            img
+                                .attr('src',"/assets/images/character-bomb.svg")
+                                .attr('alt',"B")
                             break;
                         case 'M':
-                            td.firstChild.src = "/assets/images/character-marshal.svg"
-                            td.firstChild.alt = "M"
+                            img
+                                .attr('src',"/assets/images/character-marshal.svg")
+                                .attr('alt',"M")
                             break;
                         case '1':
-                            td.firstChild.src = "/assets/images/character-spy.svg"
-                            td.firstChild.alt = "1"
+                            img
+                                .attr('src',"/assets/images/character-spy.svg")
+                                .attr('alt',"1")
                             break;
                         case '2':
-                            td.firstChild.src = "/assets/images/character-scout.svg"
-                            td.firstChild.alt = "2"
+                            img
+                                .attr('src',"/assets/images/character-scout.svg")
+                                .attr('alt',"2")
                             break;
                         case '3':
-                            td.firstChild.src = "/assets/images/character-miner.svg"
-                            td.firstChild.alt = "3"
+                            img
+                                .attr('src',"/assets/images/character-miner.svg")
+                                .attr('alt',"3")
                             break;
                         case '4':
-                            td.firstChild.src = "/assets/images/character-sergeant.svg"
-                            td.firstChild.alt = "4"
+                            img
+                                .attr('src',"/assets/images/character-sergeant.svg")
+                                .attr('alt',"4")
                             break;
                         case '5':
-                            td.firstChild.src = "/assets/images/character-lieutenant.svg"
-                            td.firstChild.alt = "5"
+                            img
+                                .attr('src',"/assets/images/character-lieutenant.svg")
+                                .attr('alt',"5")
                             break;
                         case '6':
-                            td.firstChild.src = "/assets/images/character-captain.svg"
-                            td.firstChild.alt = "6"
+                            img
+                                .attr('src',"/assets/images/character-captain.svg")
+                                .attr('alt',"6")
                             break;
                         case '7':
-                            td.firstChild.src = "/assets/images/character-major.svg"
-                            td.firstChild.alt = "7"
+                            img
+                                .attr('src',"/assets/images/character-major.svg")
+                                .attr('alt',"7")
                             break;
                         case "8":
-                            td.firstChild.src = "/assets/images/character-colonel.svg"
-                            td.firstChild.alt = "8"
+                            img
+                                .attr('src',"/assets/images/character-colonel.svg")
+                                .attr('alt',"8")
                             break;
                         case "9":
-                            td.firstChild.src = "/assets/images/character-general.svg"
-                            td.firstChild.alt = "9"
+                            img
+                                .attr('src',"/assets/images/character-general.svg")
+                                .attr('alt',"9")
                             break;
                     }
                 } else {
                     let td = document.getElementById("row"+ row + "col" + col)
-                    td.className = "cell cells_green" //empty cell
+                    td.className = "cell cells__green" //empty cell
+                    $("." + "row"+ row + "col" + col)
+                        .attr('src',"")
+                        .attr('alt',"")
                 }
                 num++;
             }
