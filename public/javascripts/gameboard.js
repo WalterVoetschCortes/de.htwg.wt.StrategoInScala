@@ -160,7 +160,6 @@ class MatchField {
         }
     }
 
-
     move(dir, row, col) {
         $.ajax({
             method: "POST",

@@ -13,7 +13,6 @@ import akka.stream.Materializer
 import scala.swing.Reactor
 
 
-
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
 
