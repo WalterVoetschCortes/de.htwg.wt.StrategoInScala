@@ -26,6 +26,8 @@ GET     /setFigure/:row/:col/:figure        controllers.HomeController.setFigure
 
 POST    /move                               controllers.HomeController.move
 
+POST    /setPlayer                          controllers.HomeController.setPlayer
+
 GET     /json                               controllers.HomeController.gameToJson
 
 GET     /websocket                          controllers.HomeController.socket

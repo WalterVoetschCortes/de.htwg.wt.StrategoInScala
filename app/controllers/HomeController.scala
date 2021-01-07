@@ -17,6 +17,9 @@ import scala.swing.Reactor
 class HomeController @Inject()(cc: ControllerComponents) (implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
 
   val gameController: ControllerInterface = Stratego.controller
+  var playerName1 = ""
+  var playerName2 = ""
+  var clientPlayerIndex = 0
 
   def matchFieldText: String = {
     gameController.matchFieldToString.replaceAll(s"\\033\\[.{1,5}m","")
@@ -65,6 +68,30 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
   def setFigure(row: String, col: String, figure: String): Action[AnyContent] = Action {
     Stratego.tui.processInputLine("s " + row + col + figure)
     Ok(matchFieldText)
+  }
+
+  def setPlayer(): Action[JsValue] = Action(parse.json) {
+    setPlayerRequest: Request[JsValue] => {
+      val playerName = (setPlayerRequest.body \ "playerName").as[String]
+
+      if(clientPlayerIndex == 1){
+        clientPlayerIndex = 0
+      }
+
+      if(playerName1 == ""){
+        playerName1 = playerName
+      }else{
+        playerName2 = playerName
+        gameController.createEmptyMatchfield(gameController.getSize)
+        gameController.setPlayers(playerName1 + " " + playerName2)
+        clientPlayerIndex = 1
+        gameController.initMatchfield
+      }
+
+      Ok(Json.obj(
+        "clientPlayerIndex" -> JsNumber(clientPlayerIndex)
+      ))
+    }
   }
 
   def move: Action[JsValue] = Action(parse.json) {
