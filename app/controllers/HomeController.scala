@@ -20,6 +20,7 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
   var playerName1 = ""
   var playerName2 = ""
   var clientPlayerIndex = 0
+  var playerCounter = 0
 
   def matchFieldText: String = {
     gameController.matchFieldToString.replaceAll(s"\\033\\[.{1,5}m","")
@@ -74,17 +75,21 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
     setPlayerRequest: Request[JsValue] => {
       val playerName = (setPlayerRequest.body \ "playerName").as[String]
 
-      if(clientPlayerIndex == 1){
+
+      if(playerCounter == 2){
+        playerCounter = 0
         clientPlayerIndex = 0
       }
 
-      if(playerName1 == ""){
+      if(playerCounter == 0){
         playerName1 = playerName
-      }else{
+        playerCounter = 1
+      } else{
         playerName2 = playerName
         gameController.createEmptyMatchfield(gameController.getSize)
         gameController.setPlayers(playerName1 + " " + playerName2)
         clientPlayerIndex = 1
+        playerCounter = 2
         gameController.initMatchfield
       }
 
