@@ -2,7 +2,7 @@ package controllers
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import de.htwg.se.stratego.Stratego
-import de.htwg.se.stratego.controller.controllerComponent.{ControllerInterface, FieldChanged, PlayerSwitch}
+import de.htwg.se.stratego.controller.controllerComponent.{ControllerInterface, FieldChanged, GameFinished, PlayerSwitch}
 import de.htwg.se.stratego.model.matchFieldComponent.matchFieldBaseImpl.{Field, Matrix}
 import javax.inject._
 import play.api.libs.json.{JsNumber, JsValue, Json}
@@ -21,6 +21,7 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
   var playerName2 = ""
   var clientPlayerIndex = 0
   var playerCounter = 0
+  var gameFinished = false
 
   def matchFieldText: String = {
     gameController.matchFieldToString.replaceAll(s"\\033\\[.{1,5}m","")
@@ -85,6 +86,7 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
         playerName1 = playerName
         playerCounter = 1
       } else{
+        gameFinished = false
         playerName2 = playerName
         gameController.createEmptyMatchfield(gameController.getSize)
         gameController.setPlayers(playerName1 + " " + playerName2)
@@ -246,6 +248,10 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
     reactions += {
       case event: FieldChanged => sendJsonToClient()
       case event: PlayerSwitch => sendJsonToClient()
+      case event: GameFinished => {
+        gameFinished = true
+        sendJsonToClient()
+      }
     }
 
     def sendJsonToClient(): Unit = {
@@ -254,6 +260,7 @@ class HomeController @Inject()(cc: ControllerComponents) (implicit system: Actor
         "currentPlayerIndex" -> JsNumber(gameController.currentPlayerIndex),
         "currentPlayer" -> (gameController.playerList(gameController.currentPlayerIndex)).toString(),
         "players" -> (gameController.playerList.head + " "+ gameController.playerList(1)),
+        "gameFinished" -> (gameFinished.toString),
         "matchField"-> Json.toJson(
           for{
             row <- 0 until gameController.getField.matrixSize
